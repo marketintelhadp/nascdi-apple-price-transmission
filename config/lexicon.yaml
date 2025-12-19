@@ -1,0 +1,56 @@
+# NASCDI Lexicon (edit and expand as needed)
+disruption_terms:
+  nh-44: 3
+  nh44: 3
+  jammu srinagar highway: 3
+  national highway: 2
+  highway closed: 3
+  highway closure: 3
+  traffic suspended: 2
+  traffic halted: 2
+  landslide: 2
+  landslides: 2
+  shooting stones: 2
+  mudslide: 2
+  avalanche: 2
+  blocked: 2
+  blockade: 2
+  stranded: 2
+  truck stranded: 3
+  vehicles stranded: 2
+  road blocked: 2
+  shutdown: 1
+  curfew: 1
+  unrest: 1
+  bandh: 1
+  disruption: 2
+  delay: 1
+  congestion: 1
+  bottleneck: 1
+
+mitigation_terms:
+  restored: -2
+  restoration: -2
+  cleared: -2
+  reopened: -2
+  re-opened: -2
+  traffic resumed: -2
+  normalcy restored: -2
+
+commodity_terms:
+  apple: 2
+  apples: 2
+  fruit: 1
+  fruits: 1
+  horticulture: 1
+  mandi: 1
+  azadpur: 2
+  parimpora: 2
+  sopore: 1
+  truck: 1
+  trucks: 1
+  consignment: 1
+  consignments: 1
+  cold storage: 1
+  ca store: 1
+  logistics: 1
