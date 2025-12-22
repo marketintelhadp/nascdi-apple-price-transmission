@@ -11,10 +11,12 @@ GDELT_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 
 # 🔑 Keep queries SHORT and focused
 QUERIES = {
-    "nh44": 'NH-44 AND (Kashmir OR Srinagar)',
+    "Jammu - Srinagar National Highway": 'NH-44 AND (National Highway)',
     "landslide": 'landslide AND (Kashmir OR Srinagar)',
-    "avalanche": 'avalanche AND (Kashmir OR Srinagar)',
-    "apple_supply": 'apple AND (Kashmir OR Azadpur OR Parimpora)',
+    "Shooting Stones": 'Road Blockage due to shooting stones',
+    "Snowfall": 'apple trucks, supply trucks',
+    "Road Closure" : 'trucks, traffic',
+    "Jammu Srinagar National Highway Trafic Update" : "Suspended for traffic movement"
 }
 
 HEADERS = {
