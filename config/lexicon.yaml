@@ -1,56 +1,118 @@
-# NASCDI Lexicon (edit and expand as needed)
+# ==============================
+# NASCDI FINAL LEXICON (FROZEN)
+# Aligned with NARDL asymmetry
+# ==============================
+
 disruption_terms:
-  nh-44: 3
-  nh44: 3
-  jammu srinagar highway: 3
-  national highway: 2
-  highway closed: 3
-  highway closure: 3
-  traffic suspended: 2
-  traffic halted: 2
-  landslide: 2
-  landslides: 2
-  shooting stones: 2
-  mudslide: 2
-  avalanche: 2
-  blocked: 2
-  blockade: 2
-  stranded: 2
-  truck stranded: 3
-  vehicles stranded: 2
-  road blocked: 2
-  shutdown: 1
-  curfew: 1
-  unrest: 1
-  bandh: 1
-  disruption: 2
-  delay: 1
-  congestion: 1
-  bottleneck: 1
+
+  # --- Transport & Connectivity Shocks (Highest Weight) ---
+  "nh-44": 3.0
+  "national highway 44": 3.0
+  "jammu srinagar highway": 3.0
+  "srinagar jammu highway": 3.0
+  "banihal tunnel": 3.0
+  "jawahar tunnel": 3.0
+  "qazigund banihal tunnel": 3.0
+  "zoji la": 2.5
+  "mughal road": 2.0
+
+  "highway closed": 3.0
+  "road closed": 3.0
+  "traffic suspended": 3.0
+  "traffic halted": 3.0
+  "vehicle movement stopped": 3.0
+  "blockade": 2.5
+  "route blocked": 2.5
+
+  # --- Weather & Natural Hazard Shocks ---
+  "landslide": 2.5
+  "mudslide": 2.5
+  "rockfall": 2.0
+  "shooting stones": 2.5
+  "avalanche": 3.0
+  "heavy snowfall": 2.5
+  "snowstorm": 2.0
+  "cloudburst": 2.0
+  "flash flood": 2.5
+  "extreme weather": 2.0
+  "inclement weather": 1.5
+
+  # --- Market Arrival & Supply Chain Disruption ---
+  "low arrivals": 2.5
+  "decline in arrivals": 2.5
+  "arrival shortage": 2.5
+  "restricted arrivals": 2.5
+  "delayed consignments": 2.0
+  "truck shortage": 2.0
+  "vehicle shortage": 2.0
+  "freight disruption": 2.0
+  "logistics bottleneck": 2.5
+  "supply bottleneck": 2.5
+  "supply chain disruption": 2.5
+
+  # --- Price Stress & Market Distortion Signals ---
+  "price spike": 2.5
+  "price surge": 2.5
+  "sharp price increase": 2.5
+  "price volatility": 2.0
+  "abnormal price movement": 2.0
+  "price instability": 2.0
+  "price spread widening": 2.0
+
+  "distress sale": 1.5
+  "glut": 1.5
+  "market glut": 1.5
+  "oversupply": 1.5
+  "under supply": 2.0
+
+  # --- Policy & Institutional Shocks ---
+  "lockdown": 3.0
+  "curfew": 2.5
+  "inter state movement restriction": 2.5
+  "trade restriction": 2.0
+  "market intervention": 2.0
+  "price control": 1.5
+  "regulatory restriction": 2.0
+
 
 mitigation_terms:
-  restored: -2
-  restoration: -2
-  cleared: -2
-  reopened: -2
-  re-opened: -2
-  traffic resumed: -2
-  normalcy restored: -2
+
+  # --- Transport Restoration Signals ---
+  "traffic restored": -2.0
+  "road reopened": -2.0
+  "highway reopened": -2.5
+  "traffic resumed": -2.0
+  "vehicle movement resumed": -2.0
+
+  # --- Weather Improvement ---
+  "weather improves": -1.5
+  "snow cleared": -2.0
+  "restoration work completed": -2.0
+
+  # --- Market Normalization ---
+  "arrivals improve": -2.0
+  "supply normalised": -2.0
+  "logistics normalised": -2.0
+  "market stabilises": -1.5
+  "prices stabilise": -1.5
+
 
 commodity_terms:
-  apple: 2
-  apples: 2
-  fruit: 1
-  fruits: 1
-  horticulture: 1
-  mandi: 1
-  azadpur: 2
-  parimpora: 2
-  sopore: 1
-  truck: 1
-  trucks: 1
-  consignment: 1
-  consignments: 1
-  cold storage: 1
-  ca store: 1
-  logistics: 1
+
+  # --- Commodity Context (Filter, Not Shock) ---
+  "apple": 1.0
+  "apples": 1.0
+  "fruit": 0.8
+  "horticulture produce": 0.8
+
+  # --- Producer Markets ---
+  "kashmir": 1.0
+  "srinagar": 1.0
+  "parimpora": 1.0
+  "sopore": 1.0
+  "shopian": 1.0
+  "pulwama": 1.0
+
+  # --- Terminal Markets ---
+  "azadpur": 1.0
+  "delhi mandi": 1.0
