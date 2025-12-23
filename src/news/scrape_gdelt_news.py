@@ -71,7 +71,8 @@ def main():
 
     for qname, qtext in QUERY_BLOCKS.items():
         final_query = f"({qtext}) AND {CONTEXT}"
-        print(f hookup: {qname}")
+        print(f"▶ Running query block: {qname}")
+
 
         for day in daterange(start, end):
             marker = cache_marker(qname, day.strftime("%Y-%m-%d"))
