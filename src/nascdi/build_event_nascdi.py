@@ -1,5 +1,17 @@
 import pandas as pd
 import numpy as np
+import os
+
+EVENT_FILE = "data/nascdi/event_calendar.csv"
+
+if not os.path.exists(EVENT_FILE) or os.path.getsize(EVENT_FILE) == 0:
+    raise RuntimeError(
+        "event_calendar.csv is missing or empty. "
+        "Please populate it with event data before running NASCDI."
+    )
+
+events = pd.read_csv(EVENT_FILE, parse_dates=["start_date", "end_date"])
+
 
 # Load event calendar
 events = pd.read_csv("data/nascdi/event_calendar.csv", parse_dates=["start_date", "end_date"])
