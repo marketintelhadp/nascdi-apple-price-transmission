@@ -44,7 +44,11 @@ for fp in files:
     df2 = add_posneg(df, col="NASCDI")
 
     # Drop first row (diff is NaN) + any missing core values
-    df2 = df2.dropna(subset=["avg_price_prod", "avg_price_term", "NASCDI", "NASCDI_pos", "NASCDI_neg"])
+   # Drop only rows without prices or NASCDI
+    df2 = df2.dropna(
+    subset=["avg_price_prod", "avg_price_term", "NASCDI"]
+)
+
 
     out_fp = os.path.join(OUT_DIR, os.path.basename(fp).replace(".csv", "_posneg.csv"))
     df2.to_csv(out_fp, index=False)
