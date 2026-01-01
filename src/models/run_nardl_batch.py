@@ -13,7 +13,7 @@ from statsmodels.stats.diagnostic import acorr_ljungbox, het_breuschpagan
 # -----------------------
 # Config
 # -----------------------
-IN_DIR = "data/model_posneg"
+IN_DIR = "data/model"
 OUT_DIR = "results/nardl"
 PLOT_DIR = os.path.join(OUT_DIR, "plots")
 
