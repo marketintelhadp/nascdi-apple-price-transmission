@@ -22,7 +22,7 @@ os.makedirs(PLOT_DIR, exist_ok=True)
 
 MAX_LAGS_Y = 4        # lags for dependent variable (weekly)
 MAX_LAGS_X = 4        # lags for regressors
-MIN_OBS = 60          # minimum usable observations
+MIN_OBS = 25          # minimum usable observations
 
 # -----------------------
 # Helpers
