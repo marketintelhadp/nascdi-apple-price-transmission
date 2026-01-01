@@ -236,7 +236,11 @@ for fp in files:
         "AIC": model.aic,
         "BIC": model.bic
     })
-
+if not rows:
+    raise RuntimeError(
+        "No series were successfully estimated. "
+        "Check IN_DIR, file pattern, and whether posneg files contain rows."
+    )
 # Save outputs
 res_df = pd.DataFrame(rows).sort_values(["market", "variety", "grade"])
 diag_df = pd.DataFrame(diag_rows).sort_values(["market", "variety", "grade"])
