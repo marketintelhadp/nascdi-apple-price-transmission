@@ -1,0 +1,1 @@
+This folder contains the weekly aggregates and merged posneg files
