@@ -21,14 +21,19 @@ def to_week_end_sun_midnight(dt: pd.Series) -> pd.Series:
 
 def build_nascdi_posneg(nascdi_weekly: pd.DataFrame) -> pd.DataFrame:
     """
-    Build NASCDI_pos and NASCDI_neg from weekly NASCDI series:
-    d = diff(NASCDI)
-    pos = cum sum of max(d,0)
-    neg = cum sum of max(-d,0)
+    Construct NASCDI positive and negative partial sums (Shin et al., 2014):
+      d = ΔNASCDI
+      NASCDI_pos = cumulative sum of max(d, 0)
+      NASCDI_neg = cumulative sum of max(-d, 0)
     """
-    t = nascdI_weekly = nascdI_weekly.copy()
+    t = nascdI = nascdI_weekly = nascdi_weekly.copy()
 
-    t = t.sort_values("week_end").drop_duplicates("week_end")
+    t = (
+        t.sort_values("week_end")
+         .drop_duplicates("week_end")
+         .reset_index(drop=True)
+    )
+
     t["d_nascdi"] = t["NASCDI"].diff()
 
     t["NASCDI_pos"] = np.where(t["d_nascdi"] > 0, t["d_nascdi"], 0.0)
@@ -37,7 +42,14 @@ def build_nascdi_posneg(nascdi_weekly: pd.DataFrame) -> pd.DataFrame:
     t["NASCDI_pos"] = t["NASCDI_pos"].cumsum()
     t["NASCDI_neg"] = t["NASCDI_neg"].cumsum()
 
-    return t[["week_end", "NASCDI", "d_nascdi", "NASCDI_pos", "NASCDI_neg"]]
+    return t[[
+        "week_end",
+        "NASCDI",
+        "d_nascdi",
+        "NASCDI_pos",
+        "NASCDI_neg"
+    ]]
+
 
 def main():
     # -----------------------------
