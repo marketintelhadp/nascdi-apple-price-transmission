@@ -107,6 +107,9 @@ def main():
 
     # Clean: drop missing prices
     merged = merged.dropna(subset=["avg_price_prod", "avg_price_term"]).copy()
+    merged["log_price_prod"] = np.log(merged["avg_price_prod"])
+    merged["log_price_term"] = np.log(merged["avg_price_term"])
+
 
     # -----------------------------
     # Load NASCDI weekly and align week_end
@@ -158,6 +161,8 @@ def main():
             "week_end",
             "avg_price_prod",
             "avg_price_term",
+            "log_price_prod",
+            "log_price_term",
             "NASCDI",
             "NASCDI_pos",
             "NASCDI_neg",
