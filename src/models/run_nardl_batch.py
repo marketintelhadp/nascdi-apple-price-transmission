@@ -137,7 +137,7 @@ def main():
             skipped += 1
             continue
 
-        model = OLS(Y, X).fit()
+        model = OLS(Y, X).fit(cov_type="HAC", cov_kwds={"maxlags": 4})
 
         fval, fpval = bounds_like_summary(model)
         lr_x, lr_pos, lr_neg = long_run_effects(model)
