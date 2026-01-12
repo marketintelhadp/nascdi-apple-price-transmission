@@ -183,8 +183,8 @@ def main():
     res_df = pd.DataFrame(rows).sort_values(["producer_market", "variety", "grade"])
     diag_df = pd.DataFrame(diag).sort_values(["producer_market", "variety", "grade"])
 
-    res_out = os.path.join(OUT_DIR, "nardl_results_table.csv")
-    diag_out = os.path.join(OUT_DIR, "nardl_diagnostics.csv")
+    res_out = os.path.join(OUT_DIR, "nardl_results_log.csv")
+    diag_out = os.path.join(OUT_DIR, "nardl_diagnostics_log.csv")
 
     res_df.to_csv(res_out, index=False)
     diag_df.to_csv(diag_out, index=False)
