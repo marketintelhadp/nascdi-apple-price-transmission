@@ -17,7 +17,7 @@ MAX_LAGS_Y = 4
 MAX_LAGS_X = 4
 MIN_OBS = 60
 HORIZON = 20
-SHOCK_GRID = np.linspace(-2, 2, 21)  # negative=easing, positive=intensification
+SHOCK_GRID = np.linspace(-4, 5, 20) # negative=easing, positive=intensification
 
 def parse_name(fname: str):
     base = os.path.basename(fname).replace("_posneg.csv", "")
