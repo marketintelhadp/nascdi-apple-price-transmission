@@ -150,9 +150,9 @@ surf=ax.plot_trisurf(
     alpha=0.95
 )
 
-ax.set_xlabel("Weeks after NASCDI shock")
-ax.set_ylabel("Market–Variety–Grade")
-ax.set_zlabel("Price response")
+ax.set_xlabel("Weeks after disruption shock")
+ax.set_ylabel("Market × Variety × Grade")
+ax.set_zlabel("Dynamic price response (₹/quintal)")
 
 ax.set_yticks(list(label_map.values()))
 ax.set_yticklabels(list(label_map.keys()), fontsize=8)
