@@ -1,25 +1,45 @@
 # ============================================================
-# Integrated 3D Dynamic Response Surface (NASCDI Intensification)
+# Integrated 3D Dynamic Response Surface (NASCDI)
 # ============================================================
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from pathlib import Path
 from matplotlib.colors import TwoSlopeNorm
 from mpl_toolkits.mplot3d import Axes3D  # noqa
-from pathlib import Path
 
 # ------------------------------------------------------------
-# PATHS (ROBUST)
+# PROJECT ROOT (AUTO-DETECTED)
 # ------------------------------------------------------------
-BASE_DIR = Path(__file__).resolve().parents[2]   # project root
-DATA_PATH = BASE_DIR / "results" / "nardl" / "nardl_results_log.csv"
-OUT_PATH = BASE_DIR / "plots_upgraded" / "fig_integrated_3d_dynamic_surface.png"
+BASE_DIR = Path(__file__).resolve().parents[2]
+
+# ------------------------------------------------------------
+# DATA FILE (EXACT, EXPLICIT)
+# ------------------------------------------------------------
+DATA_PATH = BASE_DIR / "results" / "dynamic_multipliers" / "dynamic_multipliers_posneg.csv"
+# ⬆️ CHANGE ONLY THE FINAL FILENAME IF NEEDED
+
+if not DATA_PATH.exists():
+    raise FileNotFoundError(
+        f"\n❌ File not found:\n{DATA_PATH}\n\n"
+        "👉 Check results/dynamic_multipliers/ and confirm filename."
+    )
+
+# ------------------------------------------------------------
+# OUTPUT
+# ------------------------------------------------------------
+OUT_DIR = BASE_DIR / "plots_upgraded"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+OUT_PATH = OUT_DIR / "fig_integrated_3d_dynamic_surface.png"
 
 # ------------------------------------------------------------
 # LOAD DATA
 # ------------------------------------------------------------
 df = pd.read_csv(DATA_PATH)
+print("✅ Loaded:", DATA_PATH)
+
 
 # ------------------------------------------------------------
 # REQUIRED COLUMNS
@@ -34,7 +54,9 @@ required_cols = [
 
 missing = [c for c in required_cols if c not in df.columns]
 if missing:
-    raise ValueError(f"Missing required columns: {missing}")
+    raise ValueError(f"❌ Missing required columns: {missing}")
+
+print("✅ All required columns present")
 
 # ------------------------------------------------------------
 # LABEL CONSTRUCTION
@@ -129,7 +151,13 @@ cbar.set_label(
 # ------------------------------------------------------------
 ax.view_init(elev=28, azim=-135)
 
-plt.tight_layout()
+plt.subplots_adjust(
+    left=0.05,
+    right=0.92,
+    bottom=0.05,
+    top=0.90
+)
+
 plt.savefig(OUT_PATH, dpi=300, bbox_inches="tight")
 plt.show()
 
