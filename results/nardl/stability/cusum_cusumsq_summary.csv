@@ -1,0 +1,9 @@
+producer_market,variety,grade,n_obs_after_lags,cusum_stat,cusum_pvalue,cusumsq_outside_95_envelope,cusum_plot,cusumsq_plot
+Shopian,American,A,72,0.5230740187843977,0.9472432024970446,1,results\nardl\stability\cusum_Shopian_American_A.png,results\nardl\stability\cusumsq_Shopian_American_A.png
+Shopian,American,B,72,0.551427381440871,0.9213760415486617,1,results\nardl\stability\cusum_Shopian_American_B.png,results\nardl\stability\cusumsq_Shopian_American_B.png
+Shopian,Delicious,A,110,0.6850185715544365,0.7360088757735468,1,results\nardl\stability\cusum_Shopian_Delicious_A.png,results\nardl\stability\cusumsq_Shopian_Delicious_A.png
+Shopian,Delicious,B,110,0.7713880914894564,0.5913131608718576,1,results\nardl\stability\cusum_Shopian_Delicious_B.png,results\nardl\stability\cusumsq_Shopian_Delicious_B.png
+Sopore,American,A,200,0.7718872648528017,0.5904811207602536,1,results\nardl\stability\cusum_Sopore_American_A.png,results\nardl\stability\cusumsq_Sopore_American_A.png
+Sopore,American,B,200,0.7418752635716646,0.6408571115205188,1,results\nardl\stability\cusum_Sopore_American_B.png,results\nardl\stability\cusumsq_Sopore_American_B.png
+Sopore,Delicious,A,236,0.649214231929605,0.7932289004563051,1,results\nardl\stability\cusum_Sopore_Delicious_A.png,results\nardl\stability\cusumsq_Sopore_Delicious_A.png
+Sopore,Delicious,B,236,0.6665796214618815,0.7659023701409297,1,results\nardl\stability\cusum_Sopore_Delicious_B.png,results\nardl\stability\cusumsq_Sopore_Delicious_B.png
