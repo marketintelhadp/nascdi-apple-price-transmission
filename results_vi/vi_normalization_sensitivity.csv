@@ -1,0 +1,5 @@
+comparison,spearman,kendall,mean_abs_diff
+baseline_vs_existing_vulnerability,0.6666666666666669,0.4999999999999999,1.1761417266928835
+baseline_minmax_vs_minmax,1.0,0.9999999999999998,0.0
+baseline_minmax_vs_zscore,1.0,0.9999999999999998,0.48440023273027205
+baseline_minmax_vs_robust,1.0,0.9999999999999998,0.46637671867811514
