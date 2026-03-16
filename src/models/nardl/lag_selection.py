@@ -16,6 +16,7 @@ for file in os.listdir(DATA_DIR):
 
     required_cols = ["log_price_prod", "NASCDI_pos", "NASCDI_neg"]
     missing = [c for c in required_cols if c not in df.columns]
+
     if missing:
         print(f"Skipping {file} (missing columns: {missing})")
         continue
@@ -40,8 +41,7 @@ for file in os.listdir(DATA_DIR):
     except Exception:
         ar_lags = None
 
-    # Exogenous lags (version-safe)
-    exog_lags = None
+    # Exogenous lags
     if hasattr(model, "dl_lags"):
         exog_lags = model.dl_lags
     elif hasattr(model, "_order"):
@@ -51,17 +51,18 @@ for file in os.listdir(DATA_DIR):
 
     rows.append({
         "dataset": file,
-        "optimal_lag_y": str(ar_lags),
-        "optimal_lag_exog": str(exog_lags),
-        "aic": getattr(sel, "aic", None),
-        "bic": getattr(sel, "bic", None),
-        "hqic": getattr(sel, "hqic", None),
+        "optimal_lag_y": ar_lags,
+        "optimal_lag_exog": exog_lags,
+        "aic": sel.aic,
+        "bic": sel.bic,
+        "hqic": sel.hqic
     })
 
 results = pd.DataFrame(rows)
 
 os.makedirs("results", exist_ok=True)
+
 results.to_csv(OUTPUT_FILE, index=False)
 
 print("Lag selection results saved to:", OUTPUT_FILE)
-print(results.head())
+print(results)
