@@ -1,5 +1,5 @@
-import pandas as pd
 import os
+import pandas as pd
 from statsmodels.tsa.ardl import ardl_select_order
 
 DATA_DIR = "data/model"
@@ -8,18 +8,21 @@ OUTPUT_FILE = "results/lag_selection_results.csv"
 rows = []
 
 for file in os.listdir(DATA_DIR):
-
     if not file.endswith(".csv"):
         continue
 
     path = os.path.join(DATA_DIR, file)
     df = pd.read_csv(path)
 
-    # Required variables
+    required_cols = ["log_price_prod", "NASCDI_pos", "NASCDI_neg"]
+    missing = [c for c in required_cols if c not in df.columns]
+    if missing:
+        print(f"Skipping {file} (missing columns: {missing})")
+        continue
+
     y = df["log_price_prod"]
     X = df[["NASCDI_pos", "NASCDI_neg"]]
 
-    # ARDL lag selection
     sel = ardl_select_order(
         endog=y,
         maxlag=6,
@@ -29,10 +32,30 @@ for file in os.listdir(DATA_DIR):
         trend="c"
     )
 
+    model = sel.model
+
+    # Dependent variable lags
+    try:
+        ar_lags = model.ar_lags
+    except Exception:
+        ar_lags = None
+
+    # Exogenous lags (version-safe)
+    exog_lags = None
+    if hasattr(model, "dl_lags"):
+        exog_lags = model.dl_lags
+    elif hasattr(model, "_order"):
+        exog_lags = model._order
+    else:
+        exog_lags = "Unavailable"
+
     rows.append({
         "dataset": file,
-        "optimal_lag_y": sel.model._maxlag,
-        "optimal_lag_exog": sel.model._maxorder
+        "optimal_lag_y": str(ar_lags),
+        "optimal_lag_exog": str(exog_lags),
+        "aic": getattr(sel, "aic", None),
+        "bic": getattr(sel, "bic", None),
+        "hqic": getattr(sel, "hqic", None),
     })
 
 results = pd.DataFrame(rows)
@@ -41,3 +64,4 @@ os.makedirs("results", exist_ok=True)
 results.to_csv(OUTPUT_FILE, index=False)
 
 print("Lag selection results saved to:", OUTPUT_FILE)
+print(results.head())
