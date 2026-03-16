@@ -46,57 +46,44 @@ for file in os.listdir(DATA_DIR):
         )
 
         model = sel.model
+        fitted = model.fit()
 
-        # Extract dependent lag
+        # Extract lag structure
         lag_y = max(model.ar_lags) if model.ar_lags else 0
 
-        # Extract NASCDI lags
         lag_pos = None
         lag_neg = None
 
-        if hasattr(model, "dl_lags") and model.dl_lags:
-            lag_pos = max(model.dl_lags.get("NASCDI_pos", [0]))
-            lag_neg = max(model.dl_lags.get("NASCDI_neg", [0]))
-
-        # Extract best IC values safely
-        best_aic_value = float(sel.aic.loc[sel.aic.idxmin()])
-        best_bic_value = float(sel.bic.loc[sel.bic.idxmin()])
-        best_hqic_value = float(sel.hqic.loc[sel.hqic.idxmin()])
-
-        print(
-            f"{file} | lag_y={lag_y}, lag_pos={lag_pos}, lag_neg={lag_neg}, "
-            f"AIC={best_aic_value:.3f}"
-        )
+        if hasattr(model, "_order"):
+            order = model._order
+            lag_pos = order.get("NASCDI_pos", 0)
+            lag_neg = order.get("NASCDI_neg", 0)
 
         rows.append({
             "dataset": file,
             "lag_y": lag_y,
             "lag_NASCDI_pos": lag_pos,
             "lag_NASCDI_neg": lag_neg,
-            "AIC": round(best_aic_value,4),
-            "BIC": round(best_bic_value,4),
-            "HQIC": round(best_hqic_value,4)
+            "AIC": round(fitted.aic,4),
+            "BIC": round(fitted.bic,4),
+            "HQIC": round(fitted.hqic,4)
         })
 
+        print(f"Saved results for {file}")
+
     except Exception as e:
-
         print(f"Error processing {file}: {e}")
-        continue
 
-
-# Convert to DataFrame
 results = pd.DataFrame(rows)
 
-print("\nFinal lag selection table:")
+print("\nFinal Lag Selection Table:\n")
 print(results)
 
-# Save results
 results.to_csv(OUTPUT_FILE, index=False)
 
 try:
     results.to_excel(os.path.join(OUTPUT_DIR, "lag_selection_results.xlsx"), index=False)
 except:
-    print("Excel export skipped (openpyxl not installed).")
+    pass
 
-print("\nLag selection results saved to:")
-print(OUTPUT_FILE)
+print("\nResults saved to:", OUTPUT_FILE)

@@ -1,1 +1,10 @@
-
+dataset,lag_y,lag_NASCDI_pos,lag_NASCDI_neg,AIC,BIC,HQIC
+weekly_model_Shopian_American_A_posneg.csv,1,"[0, 1]",[0],-133.1414,-119.157,-127.5526
+weekly_model_Shopian_American_B_posneg.csv,1,"[0, 1]",[0],-79.8219,-65.8375,-74.2331
+weekly_model_Shopian_Delicious_A_posneg.csv,4,"[0, 1, 2, 3, 4]","[0, 1, 2]",-241.7947,-203.8613,-226.4063
+weekly_model_Shopian_Delicious_B_posneg.csv,1,"[0, 1, 2, 3, 4]","[0, 1, 2]",-144.2958,-114.1977,-132.0807
+weekly_model_Sopore_American_A_posneg.csv,1,0,"[0, 1]",-446.8965,-430.3059,-440.1853
+weekly_model_Sopore_American_B_posneg.csv,1,[0],0,-318.4099,-305.1374,-313.0409
+weekly_model_Sopore_Delicious_A_posneg.csv,1,"[0, 1]",[0],-506.4543,-485.5705,-498.0397
+weekly_model_Sopore_Delicious_B_posneg.csv,1,0,"[0, 1]",-323.6317,-306.2285,-316.6195
+weekly_prices_all_posneg.csv,1,[0],"[0, 1, 2]",-1727.2471,-1691.1922,-1713.7061
