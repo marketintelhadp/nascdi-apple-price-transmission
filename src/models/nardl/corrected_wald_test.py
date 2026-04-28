@@ -90,9 +90,7 @@ def build_ecm_design(df: pd.DataFrame):
 # WALD TESTS
 # -----------------------------
 def wald_long_run(model):
-    """
-    H0: p_L1 = n_L1 (long-run symmetry)
-    """
+
     params = model.params.index.tolist()
 
     if "p_L1" not in params or "n_L1" not in params:
@@ -102,13 +100,12 @@ def wald_long_run(model):
     R[0, params.index("p_L1")] = 1
     R[0, params.index("n_L1")] = -1
 
-    test = model.wald_test(R)
+    test = model.wald_test(R, scalar=True)  # 🔥 FIX
+
     return float(test.statistic), float(test.pvalue)
 
 def wald_short_run(model):
-    """
-    H0: sum(dp_L*) = sum(dn_L*) (short-run symmetry)
-    """
+
     params = model.params.index.tolist()
 
     dp_terms = [p for p in params if p.startswith("dp_L")]
@@ -125,7 +122,8 @@ def wald_short_run(model):
     for t in dn_terms:
         R[0, params.index(t)] -= 1
 
-    test = model.wald_test(R)
+    test = model.wald_test(R, scalar=True)  # 🔥 FIX
+
     return float(test.statistic), float(test.pvalue)
 
 # -----------------------------
