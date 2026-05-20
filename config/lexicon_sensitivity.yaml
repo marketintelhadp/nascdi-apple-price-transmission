@@ -1,0 +1,118 @@
+# ==============================
+# NASCDI FINAL LEXICON (FROZEN)
+# Aligned with NARDL asymmetry
+# ==============================
+
+disruption_terms:
+
+  # --- Transport & Connectivity Shocks (Highest Weight) ---
+  "nh-44": 1.0
+  "national highway 44": 1.0
+  "jammu srinagar highway": 1.0
+  "srinagar jammu highway": 1.0
+  "banihal tunnel": 1.0
+  "jawahar tunnel": 1.0
+  "qazigund banihal tunnel": 1.0
+  "zoji la": 1.0
+  "mughal road": 1.0
+
+  "highway closed": 1.0
+  "road closed": 1.0
+  "traffic suspended": 1.0
+  "traffic halted": 1.0
+  "vehicle movement stopped": 1.0
+  "blockade": 1.0
+  "route blocked": 1.0
+
+  # --- Weather & Natural Hazard Shocks ---
+  "landslide": 1.0
+  "mudslide": 1.0
+  "rockfall": 1.0
+  "shooting stones": 1.0
+  "avalanche": 1.0
+  "heavy snowfall": 1.0
+  "snowstorm": 1.0
+  "cloudburst": 1.0
+  "flash flood": 1.0
+  "extreme weather": 1.0
+  "inclement weather": 1.0
+
+  # --- Market Arrival & Supply Chain Disruption ---
+  "low arrivals": 1.0
+  "decline in arrivals": 1.0
+  "arrival shortage": 1.0
+  "restricted arrivals": 1.0
+  "delayed consignments": 1.0
+  "truck shortage": 1.0
+  "vehicle shortage": 1.0
+  "freight disruption": 1.0
+  "logistics bottleneck": 1.0
+  "supply bottleneck": 1.0
+  "supply chain disruption": 1.0
+
+  # --- Price Stress & Market Distortion Signals ---
+  "price spike": 1.0
+  "price surge": 1.0
+  "sharp price increase": 1.0
+  "price volatility": 1.0
+  "abnormal price movement": 1.0
+  "price instability": 1.0
+  "price spread widening": 1.0
+
+  "distress sale": 1.0
+  "glut": 1.0
+  "market glut": 1.0
+  "oversupply": 1.0
+  "under supply": 1.0
+
+  # --- Policy & Institutional Shocks ---
+  "lockdown": 1.0
+  "curfew": 1.0
+  "inter state movement restriction": 1.0
+  "trade restriction": 1.0
+  "market intervention": 1.0
+  "price control": 1.0
+  "regulatory restriction": 1.0
+
+
+mitigation_terms:
+
+  # --- Transport Restoration Signals ---
+  "traffic restored": -1.0
+  "road reopened": -1.0
+  "highway reopened": -1.0
+  "traffic resumed": -1.0
+  "vehicle movement resumed": -1.0
+
+  # --- Weather Improvement ---
+  "weather improves": -1.0
+  "snow cleared": -1.0
+  "restoration work completed": -1.0
+
+  # --- Market Normalization ---
+  "arrivals improve": -1.0
+  "supply normalised": -1.0
+  "logistics normalised": -1.0
+  "market stabilises": -1.0
+  "prices stabilise": -1.0
+
+
+commodity_terms:
+
+  # --- Commodity Context (Filter, Not Shock) ---
+  "apple": 1.0
+  "apples": 1.0
+  "fruit": 1.0
+  "horticulture produce": 1.0
+
+  # --- Producer Markets ---
+  "kashmir": 1.0
+  "srinagar": 1.0
+  "parimpora": 1.0
+  "sopore": 1.0
+  "shopian": 1.0
+  "pulwama": 1.0
+
+  # --- Terminal Markets ---
+  "azadpur": 1.0
+  "delhi mandi": 1.0
