@@ -1,0 +1,229 @@
+# ============================================================
+# NASCDI Lexicon — Kashmir Apple Supply Chain Disruption Index
+# ============================================================
+# Research context: Apple price transmission between production
+# markets (Shopian, Sopore) and terminal market (Azadpur),
+# mediated by NH-44 connectivity and regional disruptions.
+#
+# Term weights:
+#   > 0 = DISRUPTION (raises index)
+#   < 0 = MITIGATION (lowers index — restoration of normalcy)
+#
+# Weights calibrated on a [0.5, 3.0] scale:
+#   0.5–1.0 : weak/indirect signal
+#   1.5–2.0 : moderate, confirmed disruption
+#   2.5–3.0 : severe, prolonged disruption
+# ============================================================
+
+disruption_terms:
+
+  # ── Highway / Road Infrastructure ──────────────────────────
+  nh-44:                  2.0   # National Highway 44 (Jammu–Srinagar axis)
+  national highway:       1.5
+  highway blocked:        2.0
+  highway closed:         2.0
+  highway disrupted:      1.5
+  highway suspended:      2.0
+  road blocked:           2.0
+  road closed:            1.5
+  road disrupted:         1.5
+  road damage:            1.5
+  route blocked:          2.0
+  route suspended:        2.0
+  road clearance:         1.0
+  banihal:                1.5   # Banihal pass / tunnel — critical chokepoint
+  "jawaharlal nehru tunnel": 1.5
+  jn tunnel:              1.5
+  banihal tunnel:         2.0
+  ramban:                 1.5   # Ramban segment — most landslide-prone
+  traffic suspended:      2.0
+  traffic halted:         2.0
+  traffic disrupted:      1.5
+  no traffic:             1.5
+  traffic jam:            1.0
+  road clearance:         1.0
+  convoy:                 1.0   # NH-44 convoy system implies restricted movement
+  one-way traffic:        1.0
+
+  # ── Weather Events ─────────────────────────────────────────
+  landslide:              2.5
+  landslides:             2.5
+  shooting stones:        2.0   # Local term for rockfall on NH-44
+  rockfall:               2.0
+  rock fall:              2.0
+  mudslide:               2.0
+  snowfall:               2.0
+  heavy snowfall:         2.5
+  snowstorm:              2.5
+  blizzard:               2.5
+  snowbound:              2.0
+  snow bound:             2.0
+  avalanche:              2.5
+  flood:                  2.5
+  floods:                 2.5
+  flooding:               2.0
+  flash flood:            2.5
+  cloudburst:             2.5
+  heavy rain:             1.5
+  hailstorm:              1.5
+  hailstones:             1.5
+  frost:                  1.5
+  extreme weather:        1.5
+  inclement weather:      1.0
+  bad weather:            1.0
+  waterlogged:            1.0
+  inundated:              1.5
+
+  # ── Political / Security Disruptions ───────────────────────
+  curfew:                 3.0
+  shutdown:               2.5
+  strike:                 2.0
+  hartal:                 2.5   # Regional term for enforced strike
+  bandh:                  2.5   # Complete shutdown
+  protest:                1.5
+  agitation:              1.5
+  unrest:                 2.0
+  violence:               2.0
+  clashes:                2.0
+  encounter:              2.0
+  militancy:              2.5
+  militant:               2.0
+  militants:              2.0
+  terrorist:              2.0
+  terrorism:              2.0
+  security forces:        1.0
+  crackdown:              2.0
+  lockdown:               2.5
+  internet shutdown:      2.0
+  communication blackout: 2.0
+  mobile internet:        1.5
+  section 144:            2.0
+  stone pelting:          2.0
+  pellets:                1.5
+  security cordon:        1.5
+  cordon and search:      1.5
+  grenades:               1.5
+  gunfight:               2.0
+  tension:                1.0
+  disturbance:            1.5
+
+  # ── Agricultural / Horticultural Disruptions ───────────────
+  crop damage:            2.0
+  crop loss:              2.0
+  orchard damage:         2.0
+  fruit damage:           1.5
+  apple damage:           2.0
+  post-harvest loss:      2.0
+  price crash:            2.0
+  mandi closed:           2.0
+  market closed:          1.5
+  cold storage full:      1.5
+  storage problem:        1.5
+  glut:                   1.5
+  overproduction:         1.0
+  distress sale:          2.0
+  distress selling:       2.0
+  poor yield:             1.5
+  low yield:              1.5
+  bumper crop:            1.0   # Can disrupt markets via glut
+
+  # ── Logistics / Transportation ─────────────────────────────
+  truck shortage:         2.0
+  vehicle shortage:       1.5
+  transporters strike:    2.5
+  trucker strike:         2.5
+  transport disrupted:    2.0
+  freight disruption:     1.5
+  logistics disrupted:    1.5
+  supply chain disrupted: 2.0
+  supply disruption:      2.0
+  shortage:               1.5
+  scarcity:               1.5
+  fuel shortage:          1.5
+
+  # ── Regulatory / Policy ────────────────────────────────────
+  export ban:             2.0
+  trade restriction:      1.5
+  import duty:            1.0
+  msp dispute:            1.5
+  commission agents:      1.0
+  adatiya:                1.0
+  arthiya:                1.0
+  market fee:             0.5
+  gst:                    0.5
+  tax dispute:            1.0
+  border closed:          2.0
+  check post:             1.0
+
+
+mitigation_terms:
+
+  # ── Restoration Events ─────────────────────────────────────
+  highway reopened:       -2.0
+  road reopened:          -2.0
+  road cleared:           -1.5
+  traffic restored:       -2.0
+  traffic resumed:        -2.0
+  route cleared:          -2.0
+  route restored:         -2.0
+  normal traffic:         -1.5
+  movement restored:      -1.5
+  connectivity restored:  -2.0
+  restored:               -1.0
+  cleared:                -1.0
+  normalcy:               -1.5
+  normalcy restored:      -2.0
+  situation normal:       -1.5
+  curfew lifted:          -2.0
+  shutdown called off:    -2.0
+  strike called off:      -2.0
+  hartal called off:      -2.0
+  bandh called off:       -2.0
+  reopened:               -1.0
+  resumed:                -1.0
+  relief:                 -1.0
+  rescue:                 -0.5
+  restored connectivity:  -2.0
+  internet restored:      -1.5
+  peaceful:               -1.0
+
+
+commodity_terms:
+
+  # ── Apple / Horticulture Context ───────────────────────────
+  # A match in ANY of these terms qualifies an article for NASCDI scoring.
+  # This ensures only supply-chain-relevant articles are counted.
+  apple:                  1.0
+  apples:                 1.0
+  kashmiri apple:         1.0
+  kashmiri apples:        1.0
+  delicious apple:        1.0
+  american apple:         1.0
+  kala kulu:              1.0   # Local variety
+  maharaji:               1.0   # Local variety
+  horticulture:           1.0
+  horticulturalist:       1.0
+  fruit growers:          1.0
+  fruit grower:           1.0
+  apple grower:           1.0
+  apple growers:          1.0
+  apple belt:             1.0
+  apple industry:         1.0
+  apple trader:           1.0
+  apple traders:          1.0
+  orchard:                1.0
+  orchards:               1.0
+  fruit:                  0.5
+  shopian:                1.0   # Major apple-producing district
+  sopore:                 1.0   # Major apple market (mandi)
+  azadpur:                1.0   # Major terminal market (Delhi)
+  pulwama:                0.5   # Apple-producing district
+  kulgam:                 0.5   # Apple-producing district
+  anantnag:               0.5   # Apple-producing district
+  kashmir valley:         0.5
+  jammu kashmir:          0.5
+  jammu and kashmir:      0.5
+  j&k:                    0.5
+  srinagar:               0.5
+  mandi:                  0.5   # Wholesale market
+  mandis:                 0.5

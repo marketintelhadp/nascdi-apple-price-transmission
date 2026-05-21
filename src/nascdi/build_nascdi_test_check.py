@@ -3,7 +3,7 @@ import re
 import glob
 import yaml
 import argparse
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 import numpy as np
 import pandas as pd
@@ -63,26 +63,18 @@ def count_term_occurrences(text: str, term: str) -> int:
     return len(re.findall(pattern, text))
 
 
-def score_article_components(text: str, lex: Dict[str, Dict[str, float]]) -> Tuple[float, float, float]:
-    disruption_score = 0.0
-    mitigation_score = 0.0
-    commodity_score = 0.0
-
-    for term, w in lex["disruption_terms"].items():
-        disruption_score += count_term_occurrences(text, term) * float(w)
-
-    for term, w in lex["mitigation_terms"].items():
-        mitigation_score += count_term_occurrences(text, term) * float(w)
-
-    for term, w in lex["commodity_terms"].items():
-        commodity_score += count_term_occurrences(text, term) * float(w)
-
-    return disruption_score, mitigation_score, commodity_score
-
-
 def score_article(text: str, lex: Dict[str, Dict[str, float]]) -> float:
-    disruption_score, mitigation_score, _commodity_score = score_article_components(text, lex)
-    return disruption_score + mitigation_score
+    score = 0.0
+    # disruption
+    for term, w in lex["disruption_terms"].items():
+        score += count_term_occurrences(text, term) * float(w)
+    # commodity context
+    for term, w in lex["commodity_terms"].items():
+        score += count_term_occurrences(text, term) * float(w)
+    # mitigation reduces
+    for term, w in lex["mitigation_terms"].items():
+        score += count_term_occurrences(text, term) * float(w)
+    return score
 
 
 def infer_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -139,10 +131,7 @@ def build_daily_index(
     min_score_threshold: float = 1.0,
     normalize_method: str = "z_to_100_10",
     clip_raw: Optional[float] = 30.0,
-    require_commodity_context: bool = True,
-    start_date: Optional[str] = None,
-    end_date: Optional[str] = None,
-) -> Tuple[pd.DataFrame, pd.DataFrame]:
+) -> pd.DataFrame:
     """
     Compute daily NASCDI:
       - score each article
@@ -151,69 +140,28 @@ def build_daily_index(
       - normalize to mean 100, sd 10 (default)
     """
     df = articles.copy()
-    if df.empty:
-        raise ValueError("No articles available for NASCDI scoring.")
 
-    # Combine title + text for scoring. GDELT ArtList often gives title only;
-    # avoid double-counting when title and text are identical.
-    title = df["title_clean"].fillna("")
-    text = df["text_clean"].fillna("")
-    df["full_text"] = np.where(title == text, title, (title + " " + text).str.strip())
+    # combine title + text for scoring (title weighted implicitly by inclusion)
+    df["full_text"] = (df["title_clean"].fillna("") + " " + df["text_clean"].fillna("")).str.strip()
+    df["score_raw"] = df["full_text"].apply(lambda t: score_article(t, lex))
 
-    components = df["full_text"].apply(lambda t: score_article_components(t, lex))
-    df["disruption_score"] = components.apply(lambda x: x[0])
-    df["mitigation_score"] = components.apply(lambda x: x[1])
-    df["commodity_score"] = components.apply(lambda x: x[2])
-    df["has_commodity_context"] = df["commodity_score"] > 0
-    df["score_raw"] = df["disruption_score"] + df["mitigation_score"]
+    # keep weak signals for volume counts, but also track "disruption articles"
+    df["is_disruption_hit"] = (df["score_raw"] >= min_score_threshold).astype(int)
 
-    df["used_in_daily"] = True
-    if require_commodity_context:
-        df["used_in_daily"] = df["has_commodity_context"]
-
+    # optional clipping to prevent one very long article dominating
     if clip_raw is not None:
-        df["score_raw_clipped"] = df["score_raw"].clip(lower=-abs(clip_raw), upper=abs(clip_raw))
-    else:
-        df["score_raw_clipped"] = df["score_raw"]
-
-    df["is_disruption_hit"] = (
-        (df["used_in_daily"]) & (df["score_raw_clipped"] >= min_score_threshold)
-    ).astype(int)
-
-    df_for_daily = df[df["used_in_daily"]].copy()
-
-    if df_for_daily.empty:
-        raise ValueError(
-            "No articles with commodity context were found. Check commodity_terms in the lexicon "
-            "or rerun with --no_require_commodity_context if the corpus is already apple-filtered."
-        )
+        df["score_raw"] = df["score_raw"].clip(lower=-abs(clip_raw), upper=abs(clip_raw))
 
     daily = (
-        df_for_daily.groupby("date", as_index=True)
+        df.groupby("date", as_index=True)
           .agg(
-              raw_nascdi=("score_raw_clipped", "mean"),
-              total_score=("score_raw_clipped", "sum"),
-              news_volume=("score_raw_clipped", "count"),
+              raw_nascdi=("score_raw", "mean"),
+              total_score=("score_raw", "sum"),
+              news_volume=("score_raw", "count"),
               disruption_article_count=("is_disruption_hit", "sum"),
           )
           .sort_index()
     )
-
-    if daily.empty:
-        raise ValueError("Daily NASCDI is empty after grouping scored articles.")
-
-    start = pd.to_datetime(start_date) if start_date else daily.index.min()
-    end = pd.to_datetime(end_date) if end_date else daily.index.max()
-    if pd.isna(start) or pd.isna(end) or end < start:
-        raise ValueError("Invalid NASCDI date range after article date parsing.")
-
-    full_index = pd.date_range(start.normalize(), end.normalize(), freq="D")
-    daily = daily.reindex(full_index)
-    daily[["raw_nascdi", "total_score"]] = daily[["raw_nascdi", "total_score"]].fillna(0.0)
-    daily[["news_volume", "disruption_article_count"]] = (
-        daily[["news_volume", "disruption_article_count"]].fillna(0).astype(int)
-    )
-    daily.index.name = "date"
 
     # Normalize
     if normalize_method == "z_to_100_10":
@@ -255,13 +203,6 @@ def main():
     parser.add_argument("--lexicon", default="config/lexicon.yaml", help="Path to lexicon YAML.")
     parser.add_argument("--out_dir", default="data/nascdi", help="Output directory.")
     parser.add_argument("--min_score", type=float, default=1.0, help="Min score to count as disruption-hit article.")
-    parser.add_argument("--start", default=None, help="Optional daily index start date, YYYY-MM-DD.")
-    parser.add_argument("--end", default=None, help="Optional daily index end date, YYYY-MM-DD.")
-    parser.add_argument(
-        "--no_require_commodity_context",
-        action="store_true",
-        help="Score all articles even when no commodity/context term is present.",
-    )
     args = parser.parse_args()
 
     os.makedirs(args.out_dir, exist_ok=True)
@@ -273,30 +214,13 @@ def main():
     frames = []
     for fp in files:
         df = pd.read_csv(fp)
-        if df.empty:
-            print(f"Skipping empty news CSV: {fp}")
-            continue
         std = infer_columns(df)
         std["file"] = os.path.basename(fp)
         frames.append(std)
 
-    if not frames:
-        raise ValueError(
-            f"No article rows found in {args.news_dir}. Populate news CSVs before building NASCDI."
-        )
-
     articles = pd.concat(frames, ignore_index=True)
-    if articles.empty:
-        raise ValueError("No article rows found after concatenating news CSV files.")
-
     articles = articles.dropna(subset=["date"])
-    if articles.empty:
-        raise ValueError("No valid article dates found after date parsing.")
-    articles["date"] = articles["date"].dt.normalize()
-
     articles = dedupe_articles(articles)
-    if articles.empty:
-        raise ValueError("No articles remain after deduplication.")
 
     lex = load_lexicon(args.lexicon)
 
@@ -305,10 +229,7 @@ def main():
         lex=lex,
         min_score_threshold=args.min_score,
         normalize_method="z_to_100_10",
-        clip_raw=30.0,
-        require_commodity_context=not args.no_require_commodity_context,
-        start_date=args.start,
-        end_date=args.end,
+        clip_raw=30.0
     )
 
     scored_path = os.path.join(args.out_dir, "news_scored.csv")
@@ -327,3 +248,62 @@ def main():
 
 if __name__ == "__main__":
     main()
+def main():
+    parser = argparse.ArgumentParser(description="Build NASCDI from local news CSV files.")
+    parser.add_argument("--news_dir", default="data/news/raw", help="Folder with news CSV files.")
+    parser.add_argument("--lexicon", default="config/lexicon.yaml", help="Path to lexicon YAML.")
+    parser.add_argument("--out_dir", default="data/nascdi", help="Output directory.")
+    parser.add_argument("--min_score", type=float, default=1.0)
+    args = parser.parse_args()
+
+    os.makedirs(args.out_dir, exist_ok=True)
+
+    files = glob.glob(os.path.join(args.news_dir, "*.csv"))
+    print(f"\n[1] CSV files found: {len(files)}")
+    for f in files:
+        print(f"    {f}")
+    if not files:
+        raise FileNotFoundError(f"No CSV files found in {args.news_dir}")
+
+    frames = []
+    for fp in files:
+        df = pd.read_csv(fp)
+        print(f"\n[2] Raw columns in {os.path.basename(fp)}: {df.columns.tolist()}")
+        print(f"    Raw rows: {len(df)}")
+        std = infer_columns(df)
+        std["file"] = os.path.basename(fp)
+        print(f"    After infer_columns: {len(std)} rows")
+        print(f"    Sample date_raw values: {std['date_raw'].head(3).tolist()}")
+        print(f"    Sample parsed dates:    {std['date'].head(3).tolist()}")
+        print(f"    NaT dates: {std['date'].isna().sum()}")
+        frames.append(std)
+
+    articles = pd.concat(frames, ignore_index=True)
+    print(f"\n[3] Total after concat:      {len(articles)}")
+
+    articles = articles.dropna(subset=["date"])
+    print(f"[4] After dropna(date):      {len(articles)}  <-- if 0, date parsing failed")
+
+    articles = dedupe_articles(articles)
+    print(f"[5] After deduplication:     {len(articles)}")
+
+    lex = load_lexicon(args.lexicon)
+    print(f"\n[6] Lexicon loaded:")
+    print(f"    disruption_terms:  {len(lex['disruption_terms'])}")
+    print(f"    mitigation_terms:  {len(lex['mitigation_terms'])}")
+    print(f"    commodity_terms:   {len(lex['commodity_terms'])}")
+
+    scored_articles, daily = build_daily_index(
+        articles=articles,
+        lex=lex,
+        min_score_threshold=args.min_score,
+        normalize_method="z_to_100_10",
+        clip_raw=30.0
+    )
+
+    print(f"\n[7] Scored articles rows:    {len(scored_articles)}")
+    print(f"[8] Score_raw stats:\n{scored_articles['score_raw'].describe()}")
+    print(f"[9] Non-zero scores:         {(scored_articles['score_raw'] != 0).sum()}")
+    print(f"[10] Daily index rows:       {len(daily)}")
+
+    # --- rest of save logic unchanged ---

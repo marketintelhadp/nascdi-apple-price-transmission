@@ -1,0 +1,160 @@
+# NASCDI news/lexicon construction lexicon.
+# Use this file for the actual GDELT/news NASCDI pipeline.
+#
+# Design rule:
+# - disruption_terms move the index up.
+# - mitigation_terms move the index down.
+# - commodity_terms are context filters only; they do not enter score_raw.
+#   This avoids false positives where a headline merely mentions NH-44 or Kashmir.
+
+disruption_terms:
+  # Physical corridor closure and transport disruption
+  "highway closed": 3.0
+  "road closed": 3.0
+  "traffic suspended": 3.0
+  "traffic halted": 2.5
+  "vehicular movement suspended": 2.5
+  "vehicle movement stopped": 2.5
+  "highway blocked": 2.5
+  "road blocked": 2.5
+  "route blocked": 2.5
+  "traffic jam": 1.5
+  "stranded trucks": 2.5
+  "trucks stranded": 2.5
+  "truck shortage": 2.0
+  "vehicle shortage": 2.0
+  "freight disruption": 2.0
+  "logistics bottleneck": 2.5
+  "supply bottleneck": 2.5
+  "supply chain disruption": 2.5
+  "delayed consignments": 2.0
+
+  # Weather and natural hazards affecting the corridor
+  "landslide": 2.5
+  "landslides": 2.5
+  "mudslide": 2.0
+  "rockfall": 2.0
+  "shooting stones": 2.5
+  "avalanche": 3.0
+  "heavy snowfall": 2.5
+  "snowfall": 1.5
+  "snowstorm": 2.0
+  "cloudburst": 2.5
+  "flash flood": 2.5
+  "flooding": 2.0
+  "heavy rain": 1.5
+  "inclement weather": 1.5
+
+  # Market stress and apple supply-chain pressure
+  "low arrivals": 2.5
+  "decline in arrivals": 2.5
+  "restricted arrivals": 2.5
+  "arrival shortage": 2.5
+  "supply shortage": 2.0
+  "acute shortage": 2.5
+  "price spike": 2.5
+  "price surge": 2.5
+  "price volatility": 2.0
+  "price crash": 2.0
+  "distress sale": 2.0
+  "distress selling": 2.0
+  "market glut": 1.5
+  "post-harvest loss": 2.0
+  "post harvest loss": 2.0
+  "cold storage full": 1.5
+  "cold chain failure": 2.0
+
+  # Policy, security, and mobility shocks
+  "lockdown": 2.5
+  "curfew": 2.5
+  "shutdown": 2.0
+  "hartal": 2.0
+  "bandh": 2.0
+  "blockade": 2.5
+  "inter state movement restriction": 2.5
+  "trade restriction": 2.0
+  "internet shutdown": 1.5
+  "communication blackout": 2.0
+  "security restrictions": 2.0
+
+mitigation_terms:
+  # Corridor reopening and traffic normalisation
+  "highway reopened": -2.5
+  "road reopened": -2.0
+  "tunnel reopened": -2.0
+  "traffic restored": -2.0
+  "traffic resumed": -2.0
+  "vehicular movement resumed": -2.0
+  "vehicle movement resumed": -2.0
+  "road cleared": -2.0
+  "highway cleared": -2.0
+  "snow cleared": -2.0
+  "restoration work completed": -2.0
+
+  # Market and policy recovery
+  "arrivals improve": -2.0
+  "arrivals improved": -2.0
+  "supply restored": -2.0
+  "supply normalised": -2.0
+  "supply normalized": -2.0
+  "logistics normalised": -2.0
+  "logistics normalized": -2.0
+  "market reopened": -1.5
+  "market stabilises": -1.5
+  "market stabilizes": -1.5
+  "prices stabilise": -1.5
+  "prices stabilize": -1.5
+  "curfew lifted": -2.0
+  "shutdown called off": -2.0
+  "strike called off": -1.5
+  "normalcy restored": -2.0
+
+commodity_terms:
+  # Commodity context
+  "apple": 1.0
+  "apples": 1.0
+  "kashmir apple": 1.0
+  "kashmiri apple": 1.0
+  "apple grower": 1.0
+  "apple growers": 1.0
+  "apple farmer": 1.0
+  "apple farmers": 1.0
+  "apple crop": 1.0
+  "apple harvest": 1.0
+  "apple market": 1.0
+  "apple trade": 1.0
+  "apple price": 1.0
+  "apple prices": 1.0
+  "fruit": 0.8
+  "fruit grower": 0.8
+  "fruit market": 0.8
+  "fruit mandi": 0.8
+  "horticulture": 0.8
+  "horticultural produce": 0.8
+
+  # Geographic and corridor context
+  "kashmir": 1.0
+  "j k": 1.0
+  "jk": 1.0
+  "jammu kashmir": 1.0
+  "srinagar": 1.0
+  "jammu": 1.0
+  "jammu-srinagar": 1.0
+  "jammu srinagar": 1.0
+  "nh-44": 1.0
+  "national highway 44": 1.0
+  "jammu srinagar highway": 1.0
+  "srinagar jammu highway": 1.0
+  "banihal": 1.0
+  "ramban": 1.0
+  "qazigund": 1.0
+  "jawahar tunnel": 1.0
+  "banihal tunnel": 1.0
+  "parimpora": 1.0
+  "sopore": 1.0
+  "shopian": 1.0
+  "pulwama": 1.0
+  "baramulla": 1.0
+  "azadpur": 1.0
+  "delhi mandi": 1.0
+  "apmc": 0.8

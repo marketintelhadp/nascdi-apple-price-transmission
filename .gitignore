@@ -1,5 +1,9 @@
 # Outputs
 outputs/
+data/model_news/
+results_news/
+data/news/cache_gdelt/articles/
+data/news/cache_gdelt/failures/
 *.png
 *.pdf
 *.zip
