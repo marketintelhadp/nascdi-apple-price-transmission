@@ -11,3 +11,4 @@ scipy
 matplotlib
 pandas
 numpy
+google-cloud-bigquery>=3.25

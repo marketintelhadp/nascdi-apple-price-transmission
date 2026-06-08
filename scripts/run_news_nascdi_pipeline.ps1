@@ -1,9 +1,11 @@
 param(
-    [string]$Start = "2015-01-01",
+    [string]$Start = "2015-02-19",
     [string]$End = "2025-12-31",
+    [string]$GcpProject = "",
     [ValidateSet("producer", "terminal")]
     [string]$Dependent = "producer",
-    [switch]$SkipScrape
+    [switch]$SkipScrape,
+    [switch]$AllowMissingMajorEvents
 )
 
 $ErrorActionPreference = "Stop"
@@ -11,34 +13,30 @@ $repo = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $repo
 $env:PYTHONUTF8 = "1"
 
-$blocks = @(
-    "landslide",
-    "snowfall",
-    "nh44_updates",
-    "highway_closure",
-    "market_arrivals",
-    "logistics",
-    "political_unrest",
-    "security",
-    "covid",
-    "apple_market_general"
-)
-
 if (-not $SkipScrape) {
-    foreach ($block in $blocks) {
-        $out = "data/news/raw_gdelt_news/news_${block}_${Start}_${End}.csv"
-        python -m src.news.scrape_gdelt_news `
-            --start $Start `
-            --end $End `
-            --query_block $block `
-            --maxrecords 250 `
-            --window_days 1 `
-            --timeout 60 `
-            --min_sleep 5.5 `
-            --max_sleep 7.5 `
-            --out $out `
-            --verbose
+    if ([string]::IsNullOrWhiteSpace($GcpProject)) {
+        throw "Provide -GcpProject <your-google-cloud-project-id> for the historical GDELT GKG export."
     }
+
+    python -m src.news.export_gdelt_gkg_bigquery `
+        --project $GcpProject `
+        --start $Start `
+        --end $End `
+        --out_dir data/news/raw_gdelt_news
+}
+
+if ($AllowMissingMajorEvents) {
+    python -m src.news.audit_gdelt_event_coverage `
+        --news_dir data/news/raw_gdelt_news `
+        --event_windows config/gdelt_event_windows.csv `
+        --out_dir results_news/coverage_audit
+}
+else {
+    python -m src.news.audit_gdelt_event_coverage `
+        --news_dir data/news/raw_gdelt_news `
+        --event_windows config/gdelt_event_windows.csv `
+        --out_dir results_news/coverage_audit `
+        --fail_on_missing
 }
 
 python -m src.nascdi.build_nascdi_final `

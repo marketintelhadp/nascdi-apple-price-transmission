@@ -19,8 +19,18 @@ disruption_terms:
   "road blocked": 2.5
   "route blocked": 2.5
   "traffic jam": 1.5
+  "traffic disrupted": 2.0
+  "traffic disruption": 2.0
+  "traffic restrictions": 2.0
+  "movement restricted": 2.0
+  "movement restrictions": 2.0
   "stranded trucks": 2.5
+  "stranded vehicles": 2.0
   "trucks stranded": 2.5
+  "fruit trucks stranded": 3.0
+  "apple trucks stranded": 3.0
+  "trucks stopped": 2.0
+  "trucks halted": 2.0
   "truck shortage": 2.0
   "vehicle shortage": 2.0
   "freight disruption": 2.0
@@ -28,8 +38,12 @@ disruption_terms:
   "supply bottleneck": 2.5
   "supply chain disruption": 2.5
   "delayed consignments": 2.0
+  "transport": 0.8
+  "shortage": 1.0
 
   # Weather and natural hazards affecting the corridor
+  "natural disaster": 1.5
+  "disaster": 1.0
   "landslide": 2.5
   "landslides": 2.5
   "mudslide": 2.0
@@ -42,7 +56,14 @@ disruption_terms:
   "cloudburst": 2.5
   "flash flood": 2.5
   "flooding": 2.0
+  "flood": 2.0
   "heavy rain": 1.5
+  "heavy rainfall": 1.5
+  "incessant rain": 1.5
+  "torrential rain": 2.0
+  "road washed away": 2.5
+  "road cave-in": 2.5
+  "road cave in": 2.5
   "inclement weather": 1.5
 
   # Market stress and apple supply-chain pressure
@@ -59,6 +80,14 @@ disruption_terms:
   "distress sale": 2.0
   "distress selling": 2.0
   "market glut": 1.5
+  "farmers": 0.8
+  "growers": 0.8
+  "fruit-laden trucks": 1.5
+  "fruit laden trucks": 1.5
+  "produce stranded": 2.5
+  "crop stranded": 2.0
+  "rotting apples": 2.5
+  "fruit rotting": 2.5
   "post-harvest loss": 2.0
   "post harvest loss": 2.0
   "cold storage full": 1.5
@@ -71,19 +100,52 @@ disruption_terms:
   "hartal": 2.0
   "bandh": 2.0
   "blockade": 2.5
+  "protest": 1.5
+  "protests": 1.5
+  "unrest": 2.0
+  "strike": 1.5
   "inter state movement restriction": 2.5
   "trade restriction": 2.0
   "internet shutdown": 1.5
+  "internet blockade": 1.5
+  "mobile internet suspended": 1.5
+  "mobile services suspended": 1.5
+  "telecom services suspended": 1.5
+  "broadband suspended": 1.5
   "communication blackout": 2.0
+  "communications blackout": 2.0
   "security restrictions": 2.0
+  "virus": 1.2
+  "epidemic": 1.5
+  "pandemic": 1.5
+  "section 144": 2.0
+  "prohibitory orders": 2.0
+  "mass protests": 2.0
+  "violent protests": 2.5
+  "widespread unrest": 2.5
+  "burhan wani killing": 2.5
+  "burhan wani death": 2.0
+  "abrogation of article 370": 2.5
+  "revocation of article 370": 2.5
+  "article 370 lockdown": 3.0
+  "covid-19 lockdown": 3.0
+  "coronavirus lockdown": 3.0
+  "inter-state movement restriction": 2.5
+  "interstate movement restriction": 2.5
 
 mitigation_terms:
   # Corridor reopening and traffic normalisation
   "highway reopened": -2.5
+  "highway reopens": -2.5
+  "highway partially reopened": -1.5
+  "highway partially reopens": -1.5
   "road reopened": -2.0
+  "road reopens": -2.0
   "tunnel reopened": -2.0
   "traffic restored": -2.0
   "traffic resumed": -2.0
+  "vehicles being cleared": -1.5
+  "stranded vehicles being cleared": -2.0
   "vehicular movement resumed": -2.0
   "vehicle movement resumed": -2.0
   "road cleared": -2.0
@@ -108,6 +170,12 @@ mitigation_terms:
   "shutdown called off": -2.0
   "strike called off": -1.5
   "normalcy restored": -2.0
+  "internet restored": -1.5
+  "mobile internet restored": -1.5
+  "communications restored": -1.5
+  "restrictions eased": -1.5
+  "restrictions lifted": -2.0
+  "lockdown lifted": -2.0
 
 commodity_terms:
   # Commodity context
@@ -141,12 +209,21 @@ commodity_terms:
   "jammu": 1.0
   "jammu-srinagar": 1.0
   "jammu srinagar": 1.0
+  "sgr-jmu": 1.0
+  "sgr jmu": 1.0
+  "sgr - jmu": 1.0
   "nh-44": 1.0
   "national highway 44": 1.0
+  "nh-1a": 1.0
+  "national highway 1a": 1.0
   "jammu srinagar highway": 1.0
   "srinagar jammu highway": 1.0
   "banihal": 1.0
   "ramban": 1.0
+  "udhampur": 1.0
+  "nasri": 1.0
+  "chenani": 1.0
+  "batote": 1.0
   "qazigund": 1.0
   "jawahar tunnel": 1.0
   "banihal tunnel": 1.0
@@ -158,3 +235,6 @@ commodity_terms:
   "azadpur": 1.0
   "delhi mandi": 1.0
   "apmc": 0.8
+  "burhan wani": 1.0
+  "article 370": 1.0
+  "article 35a": 1.0

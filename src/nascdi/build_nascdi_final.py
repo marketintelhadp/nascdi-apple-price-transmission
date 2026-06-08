@@ -227,6 +227,15 @@ def infer_columns(df: pd.DataFrame, filepath: str = "") -> pd.DataFrame:
     out["text"]     = df[text_col].fillna("")   if text_col   else ""
     out["source"]   = df[source_col].fillna("") if source_col else ""
     out["url"]      = df[url_col].fillna("")    if url_col    else ""
+    for audit_col in (
+        "query_block",
+        "query",
+        "window_start",
+        "window_end",
+        "source_country",
+        "language",
+    ):
+        out[audit_col] = df[audit_col].fillna("") if audit_col in df.columns else ""
     return out
 
 
@@ -235,18 +244,33 @@ def dedupe_articles(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     df["title_clean"] = df["title"].fillna("").astype(str).map(clean_text)
     df["text_clean"]  = df["text"].fillna("").astype(str).map(clean_text)
+    df["url_norm"] = df["url"].fillna("").astype(str).str.strip()
+    with_url = df["url_norm"].str.len() > 5
 
-    has_url = (df["url"].fillna("").str.strip().str.len() > 5).any()
-    if has_url:
-        df["url_norm"] = df["url"].fillna("").astype(str).str.strip()
-        df = (df.sort_values("date")
-                .drop_duplicates(subset=["url_norm"], keep="first"))
+    if with_url.any():
+        aggregations = {
+            col: "first"
+            for col in df.columns
+            if col not in {"url_norm", "query_block"}
+        }
+        if "query_block" in df.columns:
+            aggregations["query_block"] = lambda s: "|".join(
+                sorted(set(v for v in s.dropna().astype(str) if v))
+            )
+        by_url = (
+            df[with_url]
+            .sort_values("date")
+            .groupby("url_norm", as_index=False)
+            .agg(aggregations)
+        )
+        no_url = df[~with_url].copy()
+        no_url["_key"] = no_url["date"].astype(str) + "||" + no_url["title_clean"].str[:120]
+        no_url = no_url.sort_values("date").drop_duplicates(subset=["_key"], keep="first")
+        df = pd.concat([by_url, no_url], ignore_index=True, sort=False)
     else:
-        df["_key"] = (df["date"].astype(str) + "||"
-                      + df["title_clean"].str[:120])
-        df = (df.sort_values("date")
-                .drop_duplicates(subset=["_key"], keep="first"))
-    return df
+        df["_key"] = df["date"].astype(str) + "||" + df["title_clean"].str[:120]
+        df = df.sort_values("date").drop_duplicates(subset=["_key"], keep="first")
+    return df.sort_values("date").reset_index(drop=True)
 
 
 def load_news_corpus(
@@ -368,6 +392,16 @@ def score_corpus(
     df["commodity_score"]  = components.apply(lambda x: x[2])
     df["score_raw"]        = df["disruption_score"] + df["mitigation_score"]
     df["has_commodity_context"] = df["commodity_score"] > 0
+    if clip_raw is not None:
+        df["score_raw_clipped"] = df["score_raw"].clip(
+            lower=-abs(clip_raw), upper=abs(clip_raw)
+        )
+    else:
+        df["score_raw_clipped"] = df["score_raw"]
+    df["is_index_article"] = df["score_raw_clipped"].abs() >= min_score_threshold
+    df["is_disruption_hit"] = (
+        df["score_raw_clipped"] >= min_score_threshold
+    ).astype(int)
 
     if verbose:
         print(f"\nSTAGE 3 — Scoring")
@@ -381,13 +415,13 @@ def score_corpus(
 
     # ── Commodity context filter ───────────────────────────────
     if require_commodity_context:
-        df_daily = df[df["has_commodity_context"]].copy()
+        df_daily = df[df["has_commodity_context"] & df["is_index_article"]].copy()
         if verbose:
-            print(f"  After commodity filter            : {len(df_daily):>7,}")
+            print(f"  After context and score filters   : {len(df_daily):>7,}")
         if df_daily.empty:
             raise ValueError(
-                "\n[EMPTY] No articles passed the commodity-context filter.\n"
-                "  This means no articles contained any commodity_terms.\n"
+                "\n[EMPTY] No articles passed the context and score filters.\n"
+                "  This means no articles contained both a context term and a material score.\n"
                 "  Fixes:\n"
                 "  A) Add more commodity_terms to your lexicon (e.g., 'kashmir', 'fruit').\n"
                 "  B) Rerun with --no_require_commodity_context if your corpus\n"
@@ -395,7 +429,7 @@ def score_corpus(
                 "  C) Check your news CSV — is it actually about Kashmir apples?"
             )
     else:
-        df_daily = df.copy()
+        df_daily = df[df["is_index_article"]].copy()
         if verbose:
             print("  Commodity filter : DISABLED (--no_require_commodity_context)")
 

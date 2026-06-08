@@ -32,11 +32,39 @@ The output CSV should contain article rows, not only headers. A metadata JSON is
 
 ## Full Pipeline
 
-Use the runner script:
+Use the runner script. This uses the historical GDELT GKG BigQuery table for
+the full sample, because the GDELT DOC/ArtList API is not a reliable full
+historical retrieval interface for 2016/2019/2020 shock windows.
 
 ```powershell
-.\scripts\run_news_nascdi_pipeline.ps1 -Start "2015-01-01" -End "2025-12-31" -Dependent producer
+.\scripts\run_news_nascdi_pipeline.ps1 `
+  -Start "2015-02-19" `
+  -End "2025-12-31" `
+  -GcpProject "YOUR_GOOGLE_CLOUD_PROJECT_ID" `
+  -Dependent producer
 ```
+
+The runner exports GDELT GKG records related to Kashmir/NH-44/apple
+supply-chain disruptions, classifies them into query blocks for NH-44 closures,
+landslides, snowfall, rainfall/flooding, apple transport, market arrivals,
+Burhan Wani unrest, Article 370 restrictions, internet shutdowns, COVID-19,
+security restrictions, and political unrest. It then audits the corpus against
+the major-event windows in `config/gdelt_event_windows.csv`.
+
+If the audit reports a missing major event, inspect and broaden that event's
+query before building the index. Use `-AllowMissingMajorEvents` only for
+diagnostic runs, not for the final replication build.
+
+Before the first BigQuery run, install the optional client and authenticate:
+
+```powershell
+python -m pip install google-cloud-bigquery
+gcloud auth application-default login
+```
+
+If you do not have the Google Cloud CLI, authenticate through your institution's
+preferred BigQuery workflow and make sure Application Default Credentials are
+available to Python.
 
 Use `-SkipScrape` when the raw GDELT CSVs are already present and you only want to rebuild the index, model files, and NARDL results:
 
@@ -59,6 +87,27 @@ python -m src.nascdi.build_nascdi_final `
   --clip_raw 30 `
   --normalize z_to_100_10 `
   --sensitivity_lexicon config/lexicon_sensitivity.yaml
+```
+
+Audit major-event and annual query-block coverage:
+
+```powershell
+python -m src.news.audit_gdelt_event_coverage `
+  --news_dir data/news/raw_gdelt_news `
+  --event_windows config/gdelt_event_windows.csv `
+  --out_dir results_news/coverage_audit `
+  --fail_on_missing
+```
+
+Estimate BigQuery bytes before exporting:
+
+```powershell
+python -m src.news.export_gdelt_gkg_bigquery `
+  --project YOUR_GOOGLE_CLOUD_PROJECT_ID `
+  --start 2015-02-19 `
+  --end 2025-12-31 `
+  --out_dir data/news/raw_gdelt_news `
+  --dry_run
 ```
 
 Build weekly model inputs:

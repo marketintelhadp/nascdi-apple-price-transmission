@@ -1,0 +1,6 @@
+event_id,start_date,end_date,required_query_blocks,keywords,min_articles,description
+burhan_wani_unrest,2016-07-08,2016-12-31,burhan_wani_unrest|political_unrest,burhan wani|curfew|shutdown|unrest|protest,10,Burhan Wani killing and subsequent Kashmir unrest
+article370_restrictions,2019-08-05,2020-01-31,article370_shutdown|political_unrest,article 370|article 35a|abrogation|revocation|lockdown|restrictions,10,Article 370 constitutional change and associated restrictions
+internet_shutdown_2019,2019-08-05,2020-03-31,internet_shutdown|article370_shutdown,internet shutdown|internet blockade|mobile internet|communication blackout|communications blackout,5,Communication and internet restrictions following August 2019
+covid_first_wave,2020-03-24,2020-09-30,covid,covid|covid-19|coronavirus|lockdown|quarantine,10,COVID-19 lockdown and first-wave supply-chain restrictions
+covid_second_wave,2021-03-01,2021-06-30,covid,covid|covid-19|coronavirus|lockdown|quarantine,5,COVID-19 second-wave restrictions
