@@ -24,3 +24,9 @@ venv/
 .DS_Store
 Thumbs.db
 
+
+data/nascdi_news/news_scored.csv
+data/news/raw_gdelt_news/
+data/news/cache_gdelt/
+data.zip
+*.7z
