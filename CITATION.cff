@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this archive, please cite it as below."
 type: software
 title: "Replication archive for: News-Based Corridor Disruption and Producer-Terminal Price Transmission in Kashmir's Apple Sector: A NASCDI-NARDL Analysis"
-version: "2.0.0"
+version: "2.1.0"
 license: MIT
 repository-code: "https://github.com/marketintelhadp/nascdi-apple-price-transmission"
 authors:
