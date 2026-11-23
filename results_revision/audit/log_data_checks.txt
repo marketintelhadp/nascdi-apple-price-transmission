@@ -1,0 +1,10 @@
+NASCDI weekday set: {6: 568} 568 2015-02-22 00:00:00 2026-01-04 00:00:00
+Shopian-American-A rows 77 dow {6: 77} grid notna y 77 x 77 Z 375 gaps>1wk: 7 max gap 44 dup 0
+Shopian-American-B rows 77 dow {6: 77} grid notna y 77 x 77 Z 375 gaps>1wk: 7 max gap 44 dup 0
+Shopian-Delicious-A rows 115 dow {6: 115} grid notna y 115 x 115 Z 382 gaps>1wk: 6 max gap 89 dup 0
+Shopian-Delicious-B rows 115 dow {6: 115} grid notna y 115 x 115 Z 382 gaps>1wk: 6 max gap 89 dup 0
+Sopore-American-A rows 205 dow {6: 205} grid notna y 205 x 205 Z 492 gaps>1wk: 8 max gap 83 dup 0
+Sopore-American-B rows 205 dow {6: 205} grid notna y 205 x 205 Z 492 gaps>1wk: 8 max gap 83 dup 0
+Sopore-Delicious-A rows 241 dow {6: 241} grid notna y 241 x 241 Z 496 gaps>1wk: 8 max gap 79 dup 0
+Sopore-Delicious-B rows 241 dow {6: 241} grid notna y 241 x 241 Z 496 gaps>1wk: 8 max gap 79 dup 0
+['raw_nascdi', 'NASCDI', 'news_volume', 'disruption_article_count', 'total_score', 'logvol']

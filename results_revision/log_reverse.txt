@@ -1,0 +1,8 @@
+Shopian-American-A reverse n 61 lags (1, 1, 0) ECT -0.12 F 1.64 none none LRp 0.947 SRp 0.408
+Shopian-American-B reverse n 45 lags (3, 0, 0) ECT 0.124 F 1.02 none none LRp 0.107 SRp 0.856
+Shopian-Delicious-A reverse n 87 lags (3, 2, 0) ECT -0.066 F 1.46 none none LRp 0.754 SRp 0.225
+Shopian-Delicious-B reverse n 108 lags (0, 0, 0) ECT -0.12 F 1.95 none none LRp 0.436 SRp 0.467
+Sopore-American-A reverse n 196 lags (0, 0, 0) ECT -0.143 F 3.33 inconclusive inconclusive LRp 0.513 SRp 0.86
+Sopore-American-B reverse n 169 lags (0, 3, 0) ECT -0.102 F 1.74 none none LRp 0.418 SRp 0.61
+Sopore-Delicious-A reverse n 232 lags (0, 0, 0) ECT -0.118 F 5.0 coint coint LRp 0.127 SRp 0.342
+Sopore-Delicious-B reverse n 232 lags (0, 0, 0) ECT -0.101 F 4.39 coint coint LRp 0.852 SRp 0.757

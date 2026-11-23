@@ -1,0 +1,14 @@
+sd dNASCDI 5.37
+Shopian-American-A   n= 51 cum effect of +1SD(5.6) sustained 5wk:   8.76%  se  1.87%  MDE80  5.24%
+Shopian-American-B   n= 51 cum effect of +1SD(5.6) sustained 5wk:  11.49%  se  4.30%  MDE80 12.05%
+Shopian-Delicious-A  n= 92 cum effect of +1SD(5.6) sustained 5wk:  -1.43%  se  2.76%  MDE80  7.73%
+Shopian-Delicious-B  n= 92 cum effect of +1SD(5.6) sustained 5wk:   2.03%  se  3.45%  MDE80  9.67%
+Sopore-American-A    n=176 cum effect of +1SD(5.6) sustained 5wk:   0.45%  se  1.44%  MDE80  4.04%
+Sopore-American-B    n=176 cum effect of +1SD(5.6) sustained 5wk:   1.05%  se  2.03%  MDE80  5.70%
+Sopore-Delicious-A   n=212 cum effect of +1SD(5.6) sustained 5wk:   1.24%  se  1.32%  MDE80  3.70%
+Sopore-Delicious-B   n=212 cum effect of +1SD(5.6) sustained 5wk:   1.56%  se  1.30%  MDE80  3.65%
+POOLED (8 chains, chain FE, week-clustered): joint dZ0..4 chi2 p = 0.41 | cum effect 1.06% per +1SD
+n=53 | alpha=-0.05: crit -2.77 power 0.11 | alpha=-0.1: crit -2.77 power 0.25 | alpha=-0.15: crit -2.77 power 0.43
+n=100 | alpha=-0.05: crit -2.82 power 0.18 | alpha=-0.1: crit -2.82 power 0.52 | alpha=-0.15: crit -2.82 power 0.83
+n=200 | alpha=-0.05: crit -2.76 power 0.54 | alpha=-0.1: crit -2.76 power 0.96 | alpha=-0.15: crit -2.76 power 1.00
+n=230 | alpha=-0.05: crit -2.72 power 0.70 | alpha=-0.1: crit -2.72 power 0.99 | alpha=-0.15: crit -2.72 power 1.00

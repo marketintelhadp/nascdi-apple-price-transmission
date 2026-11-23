@@ -1,0 +1,9 @@
+chain,n_sr,p_sr_dZ,cum_pct_per_SD,p_excl_sym,p_excl_asym
+Shopian-American-A,51,0.894,-4.68,0.612,0.497
+Shopian-American-B,51,0.992,-0.34,0.615,0.781
+Shopian-Delicious-A,92,0.663,-1.16,0.815,0.906
+Shopian-Delicious-B,92,0.383,-1.91,0.436,0.575
+Sopore-American-A,176,0.437,0.01,0.754,0.93
+Sopore-American-B,176,0.681,0.58,0.784,0.588
+Sopore-Delicious-A,212,0.025,-1.5,0.145,0.259
+Sopore-Delicious-B,212,0.42,-0.04,0.174,0.425

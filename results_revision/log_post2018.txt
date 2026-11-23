@@ -1,0 +1,8 @@
+Shopian-American-A post2018 FAILED: Singular matrix
+Shopian-American-B post2018 FAILED: Singular matrix
+Shopian-Delicious-A post2018 n 81 lags (2, 0, 0) ECT -0.18 F 3.98 inconclusive coint LRp 0.795 SRp 0.492
+Shopian-Delicious-B post2018 n 75 lags (3, 1, 1) ECT -0.027 F 2.43 none none LRp 0.001 SRp 0.001
+Sopore-American-A post2018 n 153 lags (0, 0, 0) ECT -0.077 F 2.08 none none LRp 0.901 SRp 0.9
+Sopore-American-B post2018 n 146 lags (1, 0, 0) ECT -0.161 F 3.79 inconclusive coint LRp 0.33 SRp 0.942
+Sopore-Delicious-A post2018 n 149 lags (1, 0, 0) ECT -0.072 F 1.62 none none LRp 0.828 SRp 0.265
+Sopore-Delicious-B post2018 n 149 lags (1, 0, 0) ECT -0.066 F 1.42 none none LRp 0.972 SRp 0.626

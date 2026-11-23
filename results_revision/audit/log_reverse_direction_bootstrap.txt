@@ -1,0 +1,16 @@
+REV Shopian-American-A   sym    lags (1, 1, 0) F 2.14 t -2.16 | p_boot F 0.133 t 0.064
+REV Shopian-American-A   xonly  lags (1, 1, 0) F 2.64 t -2.11 | p_boot F 0.122 t 0.038
+REV Shopian-American-B   sym    lags (0, 0, 0) F 1.42 t -1.92 | p_boot F 0.357 t 0.179
+REV Shopian-American-B   xonly  lags (0, 0, 0) F 1.97 t -1.94 | p_boot F 0.270 t 0.105
+REV Shopian-Delicious-A  sym    lags (3, 0, 0) F 1.46 t -0.80 | p_boot F 0.350 t 0.709
+REV Shopian-Delicious-A  xonly  lags (3, 0, 0) F 1.73 t -0.78 | p_boot F 0.339 t 0.658
+REV Shopian-Delicious-B  sym    lags (0, 0, 0) F 2.47 t -2.36 | p_boot F 0.140 t 0.082
+REV Shopian-Delicious-B  xonly  lags (0, 0, 0) F 3.02 t -2.43 | p_boot F 0.160 t 0.057
+REV Sopore-American-A    sym    lags (0, 0, 0) F 4.36 t -3.52 | p_boot F 0.014 t 0.007
+REV Sopore-American-A    xonly  lags (0, 0, 0) F 6.74 t -3.66 | p_boot F 0.005 t 0.005
+REV Sopore-American-B    sym    lags (0, 0, 0) F 4.30 t -3.51 | p_boot F 0.032 t 0.006
+REV Sopore-American-B    xonly  lags (0, 3, 0) F 3.22 t -2.53 | p_boot F 0.112 t 0.051
+REV Sopore-Delicious-A   sym    lags (0, 0, 1) F 5.44 t -3.83 | p_boot F 0.028 t 0.016
+REV Sopore-Delicious-A   xonly  lags (0, 0, 0) F 8.66 t -3.96 | p_boot F 0.006 t 0.009
+REV Sopore-Delicious-B   sym    lags (0, 1, 3) F 6.66 t -4.06 | p_boot F 0.006 t 0.009
+REV Sopore-Delicious-B   xonly  lags (0, 0, 0) F 8.74 t -4.12 | p_boot F 0.008 t 0.005

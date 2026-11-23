@@ -1,0 +1,4 @@
+Sopore-American-A pre2018 n 39 lags (1, 1, 3) ECT -0.156 F 0.77 none none LRp 0.914 SRp 0.652
+Sopore-American-B pre2018 n 39 lags (0, 2, 0) ECT -0.724 F 5.92 coint coint LRp 0.952 SRp 0.217
+Sopore-Delicious-A pre2018 n 67 lags (3, 0, 0) ECT -0.191 F 1.94 none none LRp 0.945 SRp 0.245
+Sopore-Delicious-B pre2018 n 76 lags (0, 0, 0) ECT -0.838 F 18.99 coint coint LRp 0.173 SRp 0.219
