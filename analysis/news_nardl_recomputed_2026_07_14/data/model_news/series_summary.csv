@@ -1,0 +1,9 @@
+producer_market,variety,grade,rows,week_start,week_end,file
+Shopian,American,A,77,2017-10-01,2024-12-01,C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\data\model_news\weekly_model_Shopian_American_A_posneg.csv
+Shopian,American,B,77,2017-10-01,2024-12-01,C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\data\model_news\weekly_model_Shopian_American_B_posneg.csv
+Shopian,Delicious,A,115,2017-09-17,2025-01-05,C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\data\model_news\weekly_model_Shopian_Delicious_A_posneg.csv
+Shopian,Delicious,B,115,2017-09-17,2025-01-05,C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\data\model_news\weekly_model_Shopian_Delicious_B_posneg.csv
+Sopore,American,A,205,2015-09-06,2025-02-02,C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\data\model_news\weekly_model_Sopore_American_A_posneg.csv
+Sopore,American,B,205,2015-09-06,2025-02-02,C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\data\model_news\weekly_model_Sopore_American_B_posneg.csv
+Sopore,Delicious,A,241,2015-09-06,2025-03-02,C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\data\model_news\weekly_model_Sopore_Delicious_A_posneg.csv
+Sopore,Delicious,B,241,2015-09-06,2025-03-02,C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\data\model_news\weekly_model_Sopore_Delicious_B_posneg.csv

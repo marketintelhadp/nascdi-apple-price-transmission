@@ -1,0 +1,84 @@
+{
+  "created_utc": "2026-07-14T10:33:54.180890+00:00",
+  "script": "src/data/build_weekly_prices_and_posneg.py",
+  "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "arguments": {
+    "price_path": "data/clean/prices_long.csv",
+    "nascdi_path": "data/nascdi_news/nascdi_news_weekly.csv",
+    "out_dir": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news",
+    "min_weeks": 60
+  },
+  "inputs": {
+    "price_path": {
+      "path": "data\\clean\\prices_long.csv",
+      "sha256": "15d3c6618d1c37c7c401684ec746542dfab35097d8e9f45fa8b3041c7c745138",
+      "rows": 43260
+    },
+    "nascdi_path": {
+      "path": "data\\nascdi_news\\nascdi_news_weekly.csv",
+      "sha256": "c3dbeeeeec63a05c852123edab3d92dc9e5f7a4b914313a4fd1473e104842ae6",
+      "rows": 568
+    }
+  },
+  "outputs": {
+    "weekly_model_Shopian_American_A_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_model_Shopian_American_A_posneg.csv",
+      "sha256": "f1d346c704e401418cbd2375f70aa34becc3f1ac8100bfdc5c8d4f0ca1551922",
+      "rows": 77
+    },
+    "weekly_model_Shopian_American_B_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_model_Shopian_American_B_posneg.csv",
+      "sha256": "08c07219b553a351c1a8dfe6fd394e8efa64bf822ec693e8f0929091117487f1",
+      "rows": 77
+    },
+    "weekly_model_Shopian_Delicious_A_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_model_Shopian_Delicious_A_posneg.csv",
+      "sha256": "036b21bc787180ceb3b10b319b416d9431a4b02f544cc81820b81c13605782c0",
+      "rows": 115
+    },
+    "weekly_model_Shopian_Delicious_B_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_model_Shopian_Delicious_B_posneg.csv",
+      "sha256": "0068ed5f88863fbfda1b2bc11802c47b947e3e80162bb43175383d37642cbe8f",
+      "rows": 115
+    },
+    "weekly_model_Sopore_American_A_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_model_Sopore_American_A_posneg.csv",
+      "sha256": "fff56eb99ed221cd873520add2965dfd7b3b7ce18a0d321f8a9957453ef7d541",
+      "rows": 205
+    },
+    "weekly_model_Sopore_American_B_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_model_Sopore_American_B_posneg.csv",
+      "sha256": "e495413d06e9ecc7dc2c50b331957c402ae75b4af01c5006e593deeecc01b90e",
+      "rows": 205
+    },
+    "weekly_model_Sopore_Delicious_A_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_model_Sopore_Delicious_A_posneg.csv",
+      "sha256": "6a78938d14aa8277e13576c59ace83e846b4edf409819aefe110757f14408f78",
+      "rows": 241
+    },
+    "weekly_model_Sopore_Delicious_B_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_model_Sopore_Delicious_B_posneg.csv",
+      "sha256": "2f02c66c5aab2ef6b2087448d27d536e93716cadf87ca3891fa7bb631f9b56cd",
+      "rows": 241
+    },
+    "weekly_prices_all_posneg.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\weekly_prices_all_posneg.csv",
+      "sha256": "7a55943564f7d511f64ba3cf4e2d3656be60b81489d7c349fcf18d8c626c724a",
+      "rows": 1276
+    },
+    "series_summary.csv": {
+      "path": "C:\\Users\\masro\\Documents\\Codex\\2026-05-20\\files-mentioned-by-the-user-nascdi\\news_nardl_recomputed\\data\\model_news\\series_summary.csv",
+      "sha256": "e89f1b8ca62b32a88ebdd47c934e3a001284c68f463a9b30c43b19f60c4c7286",
+      "rows": 8
+    }
+  },
+  "merge_summary": {
+    "master_rows": 1276,
+    "model_series_saved": 8,
+    "series_skipped_short": 0,
+    "min_weeks_to_save": 60,
+    "week_start": "2015-09-06",
+    "week_end": "2025-03-02"
+  }
+}

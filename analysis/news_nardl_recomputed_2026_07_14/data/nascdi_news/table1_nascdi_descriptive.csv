@@ -1,0 +1,12 @@
+Statistic,Value
+Observations (daily),3969.0
+Observations (weekly),568.0
+Mean,100.0
+Std Dev,10.00126
+Minimum,93.012958
+Maximum,169.453118
+P25,93.012958
+Median (P50),93.012958
+P75,108.438243
+Days NASCDI >= 110,763.0
+Days NASCDI <= 90,0.0
