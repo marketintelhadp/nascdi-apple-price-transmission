@@ -1,0 +1,8 @@
+Shopian-American-A covid n 53 lags (2, 0, 0) ECT -0.058 F 0.7 none none LRp 0.378 SRp 0.726
+Shopian-American-B covid n 69 lags (0, 0, 0) ECT -0.093 F 2.38 none none LRp 0.457 SRp 0.656
+Shopian-Delicious-A covid n 101 lags (1, 0, 0) ECT -0.162 F 4.21 inconclusive coint LRp 0.616 SRp 0.154
+Shopian-Delicious-B covid n 87 lags (3, 1, 3) ECT -0.038 F 1.19 none none LRp 0.438 SRp 0.441
+Sopore-American-A covid n 187 lags (0, 1, 1) ECT -0.097 F 2.85 none inconclusive LRp 0.142 SRp 0.444
+Sopore-American-B covid n 187 lags (0, 1, 0) ECT -0.153 F 4.04 inconclusive coint LRp 0.033 SRp 0.306
+Sopore-Delicious-A covid n 231 lags (0, 0, 1) ECT -0.072 F 3.35 inconclusive inconclusive LRp 0.954 SRp 0.005
+Sopore-Delicious-B covid n 232 lags (0, 0, 0) ECT -0.076 F 2.83 none inconclusive LRp 0.677 SRp 0.187

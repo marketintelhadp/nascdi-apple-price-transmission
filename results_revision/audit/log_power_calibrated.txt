@@ -1,0 +1,9 @@
+sd dNASCDI 5.37
+Shopian-American-A   n=53 sdDx=0.072 resid sd=0.057 gam=0.20 | a=-0.05: power 0.20 | a=-0.1: power 0.44 | a=-0.15: power 0.69
+Shopian-American-B   n=53 sdDx=0.069 resid sd=0.079 gam=-0.02 | a=-0.05: power 0.18 | a=-0.1: power 0.37 | a=-0.15: power 0.62
+Shopian-Delicious-A  n=101 sdDx=0.069 resid sd=0.062 gam=0.19 | a=-0.05: power 0.32 | a=-0.1: power 0.75 | a=-0.15: power 0.96
+Shopian-Delicious-B  n=87 sdDx=0.099 resid sd=0.066 gam=0.16 | a=-0.05: power 0.40 | a=-0.1: power 0.82 | a=-0.15: power 0.97
+Sopore-American-A    n=187 sdDx=0.098 resid sd=0.069 gam=0.17 | a=-0.05: power 0.87 | a=-0.1: power 1.00 | a=-0.15: power 1.00
+Sopore-American-B    n=196 sdDx=0.097 resid sd=0.106 gam=0.17 | a=-0.05: power 0.63 | a=-0.1: power 0.97 | a=-0.15: power 1.00
+Sopore-Delicious-A   n=231 sdDx=0.071 resid sd=0.074 gam=0.17 | a=-0.05: power 0.81 | a=-0.1: power 1.00 | a=-0.15: power 1.00
+Sopore-Delicious-B   n=232 sdDx=0.094 resid sd=0.112 gam=0.11 | a=-0.05: power 0.77 | a=-0.1: power 1.00 | a=-0.15: power 1.00
