@@ -25,7 +25,7 @@ This package is separate from the existing event-calendar results. It uses:
 Run the installer from PowerShell under your normal Windows account:
 
 ```powershell
-& "C:\Users\masro\Documents\Codex\2026-05-20\files-mentioned-by-the-user-nascdi\news_nardl_recomputed\install_into_vscode_and_push.ps1"
+& ".\install_into_vscode_and_push.ps1"
 ```
 
 It places the package under `analysis/news_nardl_recomputed_2026_07_14` in the

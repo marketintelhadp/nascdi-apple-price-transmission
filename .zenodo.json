@@ -1,0 +1,17 @@
+{
+  "title": "Replication archive for: News-Based Corridor Disruption and Producer-Terminal Price Transmission in Kashmir's Apple Sector: A NASCDI-NARDL Analysis",
+  "upload_type": "software",
+  "version": "2.0.0",
+  "license": "mit",
+  "language": "eng",
+  "description": "<p>Code, inputs and results for the revised analysis of producer-to-terminal apple price transmission in Kashmir using a weekly news-based corridor-disruption index (NASCDI) built from GDELT Global Knowledge Graph metadata, and nonlinear ARDL (NARDL) models with finite-sample bounds tests and wild-bootstrap inference.</p><p><b>Contents.</b> <code>src/revision/</code> and <code>src/revision/audit/</code>: estimation and additional checks. <code>results_revision/</code>: all output files behind the reported tables and figures. <code>analysis/news_nardl_recomputed_2026_07_14/</code> and <code>data/</code>: weekly NASCDI, model inputs and Agmarknet price series. <code>config/lexicon_news.yaml</code>: the 213-term lexicon. See <code>README.md</code> for a map from each script to the paper tables.</p><p><b>Superseded material.</b> The scripts in <code>src/models/</code> and the outputs in <code>results/</code>, <code>results_vi/</code> and <code>data/model/</code> belong to the earlier version of the paper and are kept for provenance only.</p><p><b>Not included.</b> The article-level scored corpus (about 8.2 GB) and the raw GDELT extract are not part of this snapshot.</p>",
+  "creators": [
+    {"name": "Majid, Masroor", "affiliation": "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"},
+    {"name": "Shaheen, Farhet A", "affiliation": "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"},
+    {"name": "Gul, Aqib", "affiliation": "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"},
+    {"name": "Sultan, Abid", "affiliation": "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"},
+    {"name": "Fayaz, Aiman", "affiliation": "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"},
+    {"name": "Rashid, Mudasir", "affiliation": "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"}
+  ],
+  "keywords": ["supply chain", "NASCDI", "GDELT", "apple", "Kashmir", "NARDL", "price transmission"]
+}

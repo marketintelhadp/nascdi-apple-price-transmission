@@ -99,15 +99,14 @@ Run all commands from the repository root.
 |---|---|---|
 | `run_main.py [label]` | `main_base.csv` | Tables 6, 8; Figs 7, 8, 10 |
 | `run_robust.py` | `main_regime_z.csv`, `main_post2018.csv`, `main_pre2018.csv`, `main_reverse.csv`, `main_covid.csv` | Table 10; Appendix Table A5 |
-| `run_index_diagnostics.py` | `index_coverage_by_year.csv`, `break_ic.csv`, `break_seq.csv`, `dnascdi_*.csv`, `partial_sum_summary.csv`, `identification_diagnostics.csv`, `fig_index_coverage.png` | Tables 4, 7; Fig 4; Appendix Tables A3, A8 |
+| `run_index_diagnostics.py` | `index_coverage_by_year.csv`, `break_ic.csv`, `break_seq.csv`, `dnascdi_*.csv`, `partial_sum_summary.csv`, `identification_diagnostics.csv` | Tables 4, 7; Fig 4 (data); Appendix Tables A3, A8 |
 | `run_unitroot.py` | `unit_root_tests.csv`, `unit_root_summary.csv` | Table 2; Appendix Table A2 |
 | `run_stability.py` | `stability_and_inference.csv` | Appendix Table A4 |
 | `run_cusum.py` | `cusum_revised.csv` | Table 9; Appendix Table A7 |
 | `run_toda_yamamoto.py` | `toda_yamamoto.csv` | Appendix Table A1 |
 | `run_multipliers.py` | `dynamic_responses_representative_shocks.csv` | Fig 11; Appendix Table A6 |
-| `make_figures.py` | `figs/` | Figs 7-11 (file names `fig6_ect_ci`, `fig7_bounds_F`, `fig_partial_sums`, `fig8_symmetry_p`, `fig10_multipliers` are kept from earlier drafts) |
-| `make_cusum_figs.py` | `figs/fig12_cusum.png`, `figs/fig13_cusumsq.png` | Figs 12-13 |
-| `make_direction_fig.py` | `figs/fig14_direction.png` | Fig 14 |
+
+The images in `results_revision/figs/` and `results_revision/fig_index_coverage.png` are stored outputs; the plotting code is not part of this archive. The csv files above hold the numbers behind every table and figure.
 
 Core functions are in `rev_lib.py` (design, partial sums, Wald and wild-bootstrap tests,
 simulated bounds) and `rev_run.py` (per-chain estimation).

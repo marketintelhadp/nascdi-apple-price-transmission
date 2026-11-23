@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this archive, please cite it as below."
+type: software
+title: "Replication archive for: News-Based Corridor Disruption and Producer-Terminal Price Transmission in Kashmir's Apple Sector: A NASCDI-NARDL Analysis"
+version: "2.0.0"
+license: MIT
+repository-code: "https://github.com/marketintelhadp/nascdi-apple-price-transmission"
+authors:
+  - family-names: Majid
+    given-names: Masroor
+    affiliation: "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"
+  - family-names: Shaheen
+    given-names: Farhet A
+    affiliation: "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"
+  - family-names: Gul
+    given-names: Aqib
+    affiliation: "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"
+  - family-names: Sultan
+    given-names: Abid
+    affiliation: "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"
+  - family-names: Fayaz
+    given-names: Aiman
+    affiliation: "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"
+  - family-names: Rashid
+    given-names: Mudasir
+    affiliation: "Institute of Business & Policy Research, Sher-e-Kashmir University of Agricultural Sciences & Technology of Kashmir"
+keywords:
+  - supply chain
+  - NASCDI
+  - GDELT
+  - apple
+  - Kashmir
+  - NARDL
+  - price transmission

@@ -2,9 +2,6 @@
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 
 from . import rev_lib as L
 
@@ -184,19 +181,3 @@ if __name__ == "__main__":
     idt = pd.DataFrame(rows)
     idt.to_csv(L.OUT_DIR / "identification_diagnostics.csv", index=False)
     print(idt.round(3).to_string())
-
-    # ---------------- E. figure: index and coverage
-    fig, ax = plt.subplots(2, 1, figsize=(9, 6), sharex=True)
-    ax[0].plot(z.index, z.values, lw=0.8, color="#1F3A5F")
-    ax[0].axhline(floor, color="#B03A2E", ls="--", lw=0.8)
-    ax[0].text(z.index[5], floor + 1.0, f"value on days with no qualifying article ({floor:.2f})", color="#B03A2E", fontsize=8)
-    ax[0].set_ylabel("Weekly NASCDI")
-    ax[1].plot(nas.index, nas["news_volume"].replace(0, np.nan), lw=0.8, color="#2E7D32")
-    ax[1].set_yscale("log")
-    ax[1].set_ylabel("Qualifying records per week (log scale)")
-    for a in ax:
-        for dte in ("2018-03-04",):
-            a.axvline(pd.Timestamp(dte), color="grey", ls=":", lw=0.8)
-    plt.tight_layout()
-    fig.savefig(L.OUT_DIR / "fig_index_coverage.png", dpi=200)
-    print("figure saved")
