@@ -1,5 +1,45 @@
 # NASCDI + Apple Price Transmission
 
+## Current status (version 2.1.0): rebuilt corpus
+
+The first GDELT extract behind the NASCDI was **incomplete** after February 2018 (69 of the 94 months from March 2018 returned no records; 15 more
+held under a tenth of the records later retrieved). All 94 months were re-exported and the index rebuilt (2,916,923 de-duplicated records; 1,641,604
+qualify). The rebuilt index shows no structural break (sequential sup-F = 22.9, bootstrap p = 0.147). **All results of the revised paper use the
+rebuilt index.** The earlier revision round in `src/revision/` and `results_revision/` ran on the incomplete extract (see the next section).
+
+| Path | Contents |
+|---|---|
+| `data/nascdi_news_v2/` | Rebuilt daily and weekly NASCDI (and equal-weights versions). Weeks end on Sunday. |
+| `data/model_news_v2/` | Eight chain files (weekly producer and terminal prices, log prices, NASCDI, partial sums) and `model_build_metadata.json`. |
+| `data/clean/prices_long.csv` | Cleaned daily prices from the APMC paper registers (Aglar APMC Shopian, Nowpora APMC Sopore, Azadpur APMC Delhi). **Contains values filled during preparation** (forward fill, backward fill, linear interpolation of runs of three or more missing values); the pre-fill sheets were not retained, so recorded and filled values cannot be separated. The `mask` column is inherited from the digitised files and must not be read as separating recorded from filled values. |
+| `src/rebuild_v2/` | Scripts that rebuild the index and reproduce every table and figure of the revised paper and its Supplementary Appendix. |
+| `results_rebuild_v2/` | CSV/JSON outputs behind those tables and figures. |
+| `data/nascdi_news/` | **Superseded** index from the incomplete extract, kept only for the audit. |
+
+Run from the repository root (Python 3.11+, `pip install -r requirements.txt`):
+
+| Script | Produces |
+|---|---|
+| `src/rebuild_v2/rebuild_index.py` | Rebuilds the index from monthly exports plus validated scores of the first 37 months (needs raw monthly exports and the article-level scores, which are not in git; re-create exports with `src/news/export_gdelt_gkg_bigquery.py`) |
+| `src/rebuild_v2/breaks_v2.py` | Mean-shift tests, coverage by year (Section 5.1, Tables A3a-b, Table 4) |
+| `src/rebuild_v2/regen.py` | Baseline NARDL, bounds, symmetry, diagnostics, identification, robustness (Tables 6-10, A5, A8) |
+| `src/rebuild_v2/a9_a4_orig.py <module> <tag> a9 / a4` | Appendix Tables A9 and A4 |
+| `src/rebuild_v2/app_compute.py final / a6 / a7 / a11 / a13` | Appendix Tables A1, A6, A7, A11, A13 |
+| `src/rebuild_v2/regen_rest.py`, `regen_a6_a13_a1.py`, `regen_pooled.py`, `v5_numbers.py` | Remaining checks and the numbers quoted in the text |
+| `src/rebuild_v2/unit_root_v2.py`, `dfgls_maic.py` | Unit-root tests (Table 2, A2) |
+| `src/rebuild_v2/make_figs_v5.py` | Figures 3, 4 and 7-14 |
+
+Seed 20261120 throughout. Re-running `regen.py` reproduces `results_rebuild_v2/tables/table6_8_baseline.csv` exactly.
+Not in git: article-level scores (about 96 MB) and the raw GDELT exports (about 15 GB). GDELT metadata are public.
+
+Known limitations: the index has not been validated against closure records; the extract holds no GKG records for 15 June-1 July 2025 (probably a source
+outage); record volume roughly halves in October 2020 without a shift in the index; Appendix Table A12 (spread test and power) was not re-run on the rebuilt
+sample sizes; bootstrap p-values for the NARDL specification in Appendix Table A9 are not comparable with those of the earlier round.
+
+The vulnerability index and its plots were withdrawn from the paper and removed from this tree (they remain in the git history).
+
+---
+
 This repository contains the empirical pipeline for:
 - building NASCDI supply-chain disruption indexes,
 - merging weekly NASCDI with mandi price series,
@@ -15,7 +55,7 @@ This repository contains the empirical pipeline for:
 
 ## Event-Calendar NASCDI
 
-The current stored NARDL results were built from the event-calendar pipeline:
+The stored results in `results/` (superseded; see below) were built from the event-calendar pipeline:
 
 ```bash
 python -m src.nascdi.build_event_nascdi
@@ -64,7 +104,7 @@ replace the event-calendar model results.
 
 ---
 
-## Revision for Scientific Reports (November 2026)
+## Earlier revision round (before the corpus rebuild; partly superseded)
 
 The revised manuscript ("News-Based Corridor Disruption and Producer-Terminal Price
 Transmission in Kashmir's Apple Sector: A NASCDI-NARDL Analysis") is produced by the code in

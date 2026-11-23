@@ -8,7 +8,7 @@ matplotlib>=3.8
 scikit-learn>=1.4
 statsmodels
 scipy
-matplotlib
-pandas
-numpy
 google-cloud-bigquery>=3.25
+arch
+pillow
+python-docx

@@ -1,0 +1,1 @@
+SUPERSEDED. nascdi_news_weekly.csv and nascdi_daily.csv in this folder were built from the first, INCOMPLETE GDELT extract (about 87% of records after March 2018 missing). They are kept only so that the audit can be reproduced (src/rebuild_v2/breaks_v2.py). Use data/nascdi_news_v2 for analysis.

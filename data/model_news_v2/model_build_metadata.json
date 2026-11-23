@@ -1,0 +1,84 @@
+{
+  "created_utc": "2026-11-19T06:34:39.527890+00:00",
+  "script": "src/data/build_weekly_prices_and_posneg.py",
+  "python": "3.13.4 (tags/v3.13.4:8a526ec, Jun  3 2025, 17:46:04) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "arguments": {
+    "price_path": "data/clean/prices_long.csv",
+    "nascdi_path": "data/nascdi_news_v2/nascdi_news_weekly.csv",
+    "out_dir": "data/model_news_v2",
+    "min_weeks": 60
+  },
+  "inputs": {
+    "price_path": {
+      "path": "data\\clean\\prices_long.csv",
+      "sha256": "15d3c6618d1c37c7c401684ec746542dfab35097d8e9f45fa8b3041c7c745138",
+      "rows": 43260
+    },
+    "nascdi_path": {
+      "path": "data\\nascdi_news_v2\\nascdi_news_weekly.csv",
+      "sha256": "759f22785301b7b34d11f1e1703b4fedb5b9771d2ac7930d367296c68402677e",
+      "rows": 568
+    }
+  },
+  "outputs": {
+    "weekly_model_Shopian_American_A_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_model_Shopian_American_A_posneg.csv",
+      "sha256": "7decfcedbfb0bfc2fd3174ec26e708590e2436085f26f6ad3fd002208eda4933",
+      "rows": 77
+    },
+    "weekly_model_Shopian_American_B_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_model_Shopian_American_B_posneg.csv",
+      "sha256": "38d3ac2dc7d114f4f2f15fe31f5f6d4cd1cd41b6267362827fa57b7b497ec3a3",
+      "rows": 77
+    },
+    "weekly_model_Shopian_Delicious_A_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_model_Shopian_Delicious_A_posneg.csv",
+      "sha256": "133dbe02f1c3ab608c39ce2dc2422d67a7dc71d4f1d5201285ef8eafd4f1b393",
+      "rows": 115
+    },
+    "weekly_model_Shopian_Delicious_B_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_model_Shopian_Delicious_B_posneg.csv",
+      "sha256": "58cd92c1ce8f30b2a932fb11ce1cdbde0ddef486f962fc6d219b5a9d39c5d0f3",
+      "rows": 115
+    },
+    "weekly_model_Sopore_American_A_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_model_Sopore_American_A_posneg.csv",
+      "sha256": "bb8f9923822de6773f120172acd82c67007bfce49ae3264eba8299a91c680f40",
+      "rows": 205
+    },
+    "weekly_model_Sopore_American_B_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_model_Sopore_American_B_posneg.csv",
+      "sha256": "9fe3f454d405d19082aca7523c807d008dfd0b6754f9198abaae70ac018222ae",
+      "rows": 205
+    },
+    "weekly_model_Sopore_Delicious_A_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_model_Sopore_Delicious_A_posneg.csv",
+      "sha256": "729812699f2ab83653ea9650fb8810f5b794a6c8f26d9a3d35e586b79ea7c2cc",
+      "rows": 241
+    },
+    "weekly_model_Sopore_Delicious_B_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_model_Sopore_Delicious_B_posneg.csv",
+      "sha256": "4a8ded4c975c3fd9cf535659aac8b551883244310b5076c731ccaa9a43346cbd",
+      "rows": 241
+    },
+    "weekly_prices_all_posneg.csv": {
+      "path": "data\\model_news_v2\\weekly_prices_all_posneg.csv",
+      "sha256": "533a7fc1c63c3ca6d0cb33dd24e73d82f40136df2c785e04db9e281935a4ef0a",
+      "rows": 1276
+    },
+    "series_summary.csv": {
+      "path": "data\\model_news_v2\\series_summary.csv",
+      "sha256": "5fc2eaac0ac9bec05c7b7a49a2f0efc6c41f01ff388748e3b62a69231d24c987",
+      "rows": 8
+    }
+  },
+  "merge_summary": {
+    "master_rows": 1276,
+    "model_series_saved": 8,
+    "series_skipped_short": 0,
+    "min_weeks_to_save": 60,
+    "week_start": "2015-09-06",
+    "week_end": "2025-03-02"
+  }
+}

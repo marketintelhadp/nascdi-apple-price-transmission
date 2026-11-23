@@ -1,0 +1,24 @@
+series,breaks,SSR,BIC,dates,test,supF,boot_p
+NEW weekly NASCDI,0.0,32019.0,2296.5,-,,,
+NEW weekly NASCDI,1.0,30774.0,2286.7,2016-04-17,,,
+NEW weekly NASCDI,2.0,29828.0,2281.6,"2016-09-11, 2022-06-12",,,
+NEW weekly NASCDI,3.0,29573.0,2289.4,"2016-09-11, 2022-06-12, 2023-08-06",,,
+NEW weekly NASCDI,,,,,0 vs 1,22.9,0.147
+OLD weekly NASCDI,0.0,50567.0,2556.1,-,,,
+OLD weekly NASCDI,1.0,19637.0,2031.5,2018-03-04,,,
+OLD weekly NASCDI,2.0,19135.0,2029.5,"2016-09-25, 2018-03-04",,,
+OLD weekly NASCDI,3.0,17872.0,2003.4,"2018-03-04, 2019-08-04, 2020-08-30",,,
+OLD weekly NASCDI,,,,,0 vs 1,891.5,0.003
+OLD weekly NASCDI,,,,,1 vs 2,14.8,0.453
+NEW log weekly record count,0.0,295.0,-365.7,-,,,
+NEW log weekly record count,1.0,212.0,-540.1,2020-10-04,,,
+NEW log weekly record count,2.0,210.0,-533.2,"2016-06-19, 2020-10-04",,,
+NEW log weekly record count,3.0,202.0,-542.9,"2016-07-10, 2017-08-27, 2020-10-11",,,
+NEW log weekly record count,,,,,0 vs 1,220.9,0.003
+NEW log weekly record count,,,,,1 vs 2,5.7,0.953
+OLD log weekly record count,0.0,8088.0,1515.0,-,,,
+OLD log weekly record count,1.0,2196.0,787.0,2018-03-11,,,
+OLD log weekly record count,2.0,2038.0,757.3,"2018-03-11, 2020-07-12",,,
+OLD log weekly record count,3.0,1726.0,675.8,"2018-03-11, 2019-08-04, 2020-08-30",,,
+OLD log weekly record count,,,,,0 vs 1,1519.1,0.003
+OLD log weekly record count,,,,,1 vs 2,43.8,0.217
